@@ -28,3 +28,6 @@ wandb
 accelerate
 huggingface-hub>=0.23.0
 prodigyopt
+psutil
+pynvml
+PyQt5
