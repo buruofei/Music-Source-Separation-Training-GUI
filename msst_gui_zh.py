@@ -6,6 +6,7 @@ import json
 import subprocess
 import time
 import psutil
+import shutil
 import pynvml
 import platform
 import ctypes
@@ -20,6 +21,7 @@ from PyQt5.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
 from PyQt5.QtCore import Qt, QThread, pyqtSignal, QSize, QFile, QObject, QTimer, QMutex, QWaitCondition, pyqtSlot, QMetaObject, Q_ARG, QUrl
 from PyQt5.QtGui import QFont, QIcon, QColor, QTextCharFormat, QTextCursor, QPainter, QPalette, QBrush, QPixmap, QDesktopServices, QFontInfo
 import resources_rc
+from archive import archive_folders
 
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 logging.basicConfig(filename='msst_gui.log', level=logging.DEBUG,
@@ -111,6 +113,28 @@ def load_or_create_config():
 
     with open(CONFIG_FILE, 'r') as f:
         return json.load(f)
+
+
+def organize_instrumental_files(store_dir):
+    instrumental_dir = os.path.join(store_dir, "instrumental")
+    if not os.path.exists(instrumental_dir):
+        os.makedirs(instrumental_dir)
+
+    moved_files = 0
+    start_time = time.time()
+
+    for filename in os.listdir(store_dir):
+        if "_instrumental" in filename.lower():
+            src_path = os.path.join(store_dir, filename)
+            dst_path = os.path.join(instrumental_dir, filename)
+            shutil.move(src_path, dst_path)
+            moved_files += 1
+
+    end_time = time.time()
+    logger.info(f"Organized {moved_files} instrumental files in {store_dir}")
+    logger.info(f"Time taken to organize files: {end_time - start_time:.2f} seconds")
+
+    return moved_files, end_time - start_time
 
 
 class SystemInfoThread(QThread):
@@ -243,6 +267,7 @@ class CustomComboBox(QComboBox):
 class InferenceThread(QThread):
     update_signal = pyqtSignal(str, bool)  # bool use for tqdm
     finished_signal = pyqtSignal(dict)
+    file_organization_signal = pyqtSignal(int, float)
 
     def __init__(self, commands, input_folder):
         super().__init__()
@@ -293,6 +318,11 @@ class InferenceThread(QThread):
                 self.process.wait()
                 summary["modules"].append((module_names[store_dir], store_dir))
                 logger.info(f"Module {module_names[store_dir]} completed. ")
+
+                # Make sure all files are organized before continuing
+                moved_files, time_taken = organize_instrumental_files(store_dir)
+                self.file_organization_signal.emit(moved_files, time_taken)
+                
             else:
                 self.terminate_process()
             logger.info(f"Inference process completed or terminated for {module_names[store_dir]}")
@@ -471,6 +501,10 @@ class ModelEditDialog(QDialog):
 class ConfigEditorDialog(QDialog):
     def __init__(self, config, parent=None):
         super().__init__(parent)
+        self.cancel_button = None
+        self.save_button = None
+        self.tabs = None
+        self.background_label = None
         self.original_config = config
         self.working_config = copy.deepcopy(self.original_config)
         self.working_config = self.validate_config(self.working_config)
@@ -822,6 +856,7 @@ class ConfigEditorDialog(QDialog):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.background_label = None
         self.inference_thread = None
         self.setWindowTitle("MSST GUI v1.3     by 领航员未鸟")
         self.setGeometry(100, 100, 800, 810)
@@ -1225,7 +1260,8 @@ class MainWindow(QMainWindow):
             self.inference_env_input.setText(file_path)
             self.save_inference_env()
 
-    def update_tooltip(self, combo, tooltip_scroll_area):
+    @staticmethod
+    def update_tooltip(combo, tooltip_scroll_area):
         current_index = combo.currentIndex()
         tooltip = combo.itemData(current_index, Qt.ToolTipRole)
         label = tooltip_scroll_area.widget()
@@ -1421,6 +1457,7 @@ class MainWindow(QMainWindow):
         self.inference_thread = InferenceThread(commands, self.input_folder)
         self.inference_thread.update_signal.connect(self.process_inference_output)
         self.inference_thread.finished_signal.connect(self.inference_finished)
+        self.inference_thread.file_organization_signal.connect(self.file_organization_completed)
         self.inference_thread.start()
 
         self.run_button.setText("终止推理")
@@ -1447,6 +1484,9 @@ class MainWindow(QMainWindow):
         """)
         self.run_button.clicked.disconnect()
         self.run_button.clicked.connect(self.stop_inference)
+
+    def file_organization_completed(self, moved_files, time_taken):
+        self.update_output(f"Organized {moved_files} instrumental files in {time_taken:.2f} seconds", color='green')
 
     def stop_inference(self):
         if hasattr(self, 'inference_thread') and self.inference_thread.isRunning():
@@ -1522,29 +1562,19 @@ class MainWindow(QMainWindow):
 
     def run_archive(self):
         logger.info("Starting archive process")
-        inference_env = self.inference_env_input.text().strip()
-
-        # Check inference environment before proceeding
-        if not self.check_inference_env():
-            return
-
-        archive_command = inference_env + f" archive.py"
-        logger.info(f"Archive command: {archive_command}")
 
         self.output_console.clear()
-        self.update_output("开始进行归档处理...", color='cyan')
+        self.update_output("开始进行归档处理...", color='green')
         self.print_separator()
 
-        process = subprocess.Popen(archive_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-                                   text=True)
-        for line in process.stdout:
-            self.update_output(line.strip())
-            logger.debug(f"Archive output: {line.strip()}")
-        process.wait()
+        def archive_output_callback(text):
+            self.update_output(text, color='#6e71ff')
+
+        archive_folders(output_callback=archive_output_callback)
 
         logger.info("Archive process completed")
         self.print_separator()
-        self.update_output("归档完成！所有结果已保存至archive文件夹", color='green')
+        self.update_output("归档完成！", color='green')
         self.print_separator()
 
     def open_config_editor(self):

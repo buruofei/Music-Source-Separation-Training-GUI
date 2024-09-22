@@ -6,7 +6,6 @@
 
 MSST-GUI is a Qt5-based inference GUI, designed to provide a convenient and intuitive way to inference (mainly for my own use). At its core, it's a GUI that uses a specified Python environment to add parameters and call `inference.py`. As such, you can also package `msst_gui_en.py` as a smaller executable file and use it in the main repository.
 
-Please note that I've slightly modified the logic for saving instruments in `inference.py` for ease of use, but it remains compatible with the main repository. The only caveat is that during concatenated inference, it may additionally infer unwanted secondary audio tracks. This is a temporary situation.
 
 ![Main Interface](./images//demo1.png)
 

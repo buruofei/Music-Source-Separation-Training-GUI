@@ -34,6 +34,8 @@ def run_folder(model, args, config, device, verbose=False):
         instruments = [config.training.target_instrument]
 
     os.makedirs(args.store_dir, exist_ok=True)
+    if not os.path.isdir(args.store_dir + '/' + 'instruments'):
+        os.mkdir(args.store_dir + '/' + 'instruments')
 
     if not verbose:
         all_mixtures_path = tqdm(all_mixtures_path, desc="Total progress")
@@ -105,11 +107,18 @@ def run_folder(model, args, config, device, verbose=False):
                     estimates = estimates * std + mean
             file_name, _ = os.path.splitext(os.path.basename(path))
             if args.flac_file:
-                output_file = os.path.join(args.store_dir, f"{file_name}_{instr}.flac")
+                if instr == 'instrumental':
+                    output_file = os.path.join(args.store_dir, 'instruments', f"{file_name}_{instr}.flac")
+                else:
+                    output_file = os.path.join(args.store_dir,  f"{file_name}_{instr}.flac")
                 subtype = 'PCM_16' if args.pcm_type == 'PCM_16' else 'PCM_24'
                 sf.write(output_file, estimates, sr, subtype=subtype)
             else:
-                output_file = os.path.join(args.store_dir, f"{file_name}_{instr}.wav")
+                if instr == 'instrumental':
+                    output_file = os.path.join(args.store_dir, 'instruments', f"{file_name}_{instr}.wav")
+                else:
+                    output_file = os.path.join(args.store_dir, f"{file_name}_{instr}.wav")
+                print(output_file)
                 sf.write(output_file, estimates, sr, subtype='FLOAT')
 
     time.sleep(1)

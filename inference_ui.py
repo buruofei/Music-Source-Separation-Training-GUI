@@ -16,7 +16,7 @@ v1.2.1
 term = Terminal()
 just_fix_windows_console()
 os.system('title MSST一键包 v1.3     by 领航员未鸟')
-inference_base = '.\env\python.exe inference.py'
+inference_base = '.\env\python.exe inference_modified.py'
 default_config = {
     "preset_name": ".前次流程",
     "vocal_model_name": "MelBandRoformer_kim.ckpt",

@@ -4,7 +4,7 @@ import winsound
 import time
 
 
-inference_base = '.\env\python.exe inference.py'
+inference_base = '.\env\python.exe inference_modified.py'
 
 
 def play_sound():
