@@ -23,7 +23,7 @@ MSST-GUI also comes equipped with a configuration editor, allowing you to add an
    ```
 2. Install the required dependencies:
    ```
-   pip install -r requirements.txt
+   pip install -r requirements-gui-only.txt
    ```
 
 ## Usage

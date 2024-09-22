@@ -31,3 +31,4 @@ prodigyopt
 psutil
 pynvml
 PyQt5
+wmi

@@ -47,7 +47,7 @@ def load_or_create_config():
             "reverb_models": {
                 "None": "禁用混响和声分离模块",
                 "dereverb_mel_band_roformer_anvuew_sdr_19.1729.ckpt": "【推荐】目前SDR得分最高",
-                "dereverb_mel_band_roformer_less_aggressive_anvuew_sdr_18.8050.ckpt": "【推荐】比1917保守，若有剥残情况下选用）",
+                "dereverb_mel_band_roformer_less_aggressive_anvuew_sdr_18.8050.ckpt": "【推荐】比1917保守，若有剥残情况下选用",
                 "deverb_bs_roformer_8_384dim_10depth.ckpt": "使用了更多数据训练的新bs模型，SDR更高，在和声分离上比mel系的要保守",
                 "deverb_bs_roformer_8_256dim_8depth.ckpt": "旧的bs模型",
                 "deverb_mel_band_roformer_8_256dim_6depth.ckpt": "非常激进的去混响，视曲目不同可能会把人声剥残，但更激进也在一些场合有更好的效果",
@@ -1105,6 +1105,7 @@ class MainWindow(QMainWindow):
                 border-radius: 3px;
                 background-color: white;
                 min-width: 6em;
+                font-size: 10pt;
             }
             QComboBox::drop-down {
                 subcontrol-origin: padding;
@@ -1115,6 +1116,7 @@ class MainWindow(QMainWindow):
                 border-left-style: solid;
                 border-top-right-radius: 3px;
                 border-bottom-right-radius: 3px;
+                font-size: 10pt;
             }
             QComboBox::down-arrow {
                 width: 14px;
@@ -1247,7 +1249,7 @@ class MainWindow(QMainWindow):
     def create_model_section(label_text, combo, tooltip_label):
         layout = QVBoxLayout()
         label = QLabel(label_text)
-        label.setStyleSheet("font-weight: bold;")
+        label.setStyleSheet("font-size: 10pt;")
         layout.addWidget(label)
         layout.addWidget(combo)
         layout.addWidget(tooltip_label)

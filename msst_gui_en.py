@@ -1098,6 +1098,7 @@ class MainWindow(QMainWindow):
                 border-radius: 3px;
                 background-color: white;
                 min-width: 6em;
+                font-size: 10pt;
             }
             QComboBox::drop-down {
                 subcontrol-origin: padding;
@@ -1108,6 +1109,7 @@ class MainWindow(QMainWindow):
                 border-left-style: solid;
                 border-top-right-radius: 3px;
                 border-bottom-right-radius: 3px;
+                font-size: 10pt;
             }
             QComboBox::down-arrow {
                 width: 14px;
@@ -1240,7 +1242,7 @@ class MainWindow(QMainWindow):
     def create_model_section(label_text, combo, tooltip_label):
         layout = QVBoxLayout()
         label = QLabel(label_text)
-        label.setStyleSheet("font-weight: bold;")
+        label.setStyleSheet("font-weight: bold; font-size: 10pt;")
         layout.addWidget(label)
         layout.addWidget(combo)
         layout.addWidget(tooltip_label)
