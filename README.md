@@ -19,7 +19,7 @@ MSST-GUI also comes equipped with a configuration editor, allowing you to add an
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/MSST-GUI.git
+   git clone https://github.com/AliceNavigator/Music-Source-Separation-Training-GUI.git
    ```
 2. Install the required dependencies:
    ```
