@@ -7,5 +7,6 @@
 	<file>images/folder-open.png</file>
 	<file>images/msst-icon.ico</file>
 	<file>images/hammer-and-anvil.png</file>
+	<file>images/document-folder.png</file>
   </qresource>
 </RCC>

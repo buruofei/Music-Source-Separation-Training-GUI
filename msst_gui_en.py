@@ -9,17 +9,15 @@ import psutil
 import shutil
 import pynvml
 import platform
-import ctypes
 import copy
-import shlex
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
                              QPushButton, QLabel, QComboBox, QCheckBox,
                              QFileDialog, QTextEdit, QMessageBox, QInputDialog,
                              QHBoxLayout, QGroupBox, QFormLayout, QLineEdit,
                              QDialog, QTableWidget, QTableWidgetItem, QHeaderView,
-                             QTabWidget, QScrollArea, QDialogButtonBox, QToolButton, QSizePolicy)
-from PyQt5.QtCore import Qt, QThread, pyqtSignal, QSize, QFile, QObject, QTimer, QMutex, QWaitCondition, pyqtSlot, QMetaObject, Q_ARG, QUrl
-from PyQt5.QtGui import QFont, QIcon, QColor, QTextCharFormat, QTextCursor, QPainter, QPalette, QBrush, QPixmap, QDesktopServices, QFontInfo
+                             QTabWidget, QScrollArea, QToolButton, QSizePolicy)
+from PyQt5.QtCore import Qt, QThread, pyqtSignal, QSize, QTimer, QMutex, QWaitCondition, pyqtSlot, QMetaObject, Q_ARG, QUrl
+from PyQt5.QtGui import QFont, QIcon, QColor, QTextCharFormat, QTextCursor, QPainter, QPixmap, QDesktopServices, QFontInfo
 import resources_rc
 from archive import archive_folders
 
@@ -998,6 +996,21 @@ class MainWindow(QMainWindow):
         """)
         folder_layout.addWidget(self.open_folder_button)
 
+        # button to open the archive folder
+        self.open_archive_button = QToolButton()
+        self.open_archive_button.setIcon(QIcon(":/images/document-folder.png"))
+        self.open_archive_button.setIconSize(QSize(24, 24))
+        self.open_archive_button.setToolTip("Open Archive Folder")
+        self.open_archive_button.clicked.connect(self.open_archive_folder)
+        self.open_archive_button.setStyleSheet("""
+                    QToolButton {
+                        padding-left: 1px;
+                    }
+                """)
+        folder_layout.addWidget(self.open_archive_button)
+
+        main_layout.addLayout(folder_layout)
+
         # Action buttons
         action_layout = QHBoxLayout()
         self.run_button = QPushButton("Run Inference")
@@ -1302,6 +1315,13 @@ class MainWindow(QMainWindow):
             QDesktopServices.openUrl(QUrl.fromLocalFile(self.input_folder))
         else:
             QMessageBox.warning(self, "Error", "Input folder does not exist.")
+
+    def open_archive_folder(self):
+        archive_folder = os.path.join(os.getcwd(), 'archive')
+        if os.path.exists(archive_folder):
+            QDesktopServices.openUrl(QUrl.fromLocalFile(archive_folder))
+        else:
+            QMessageBox.warning(self, "Error", "Archive folder does not exist.")
 
     def load_presets(self):
         logger.info("Loading presets")
