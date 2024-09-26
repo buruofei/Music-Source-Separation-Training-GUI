@@ -193,12 +193,14 @@ class SystemInfoThread(QThread):
     def get_cpu_info():
         if platform.system() == "Windows":
             try:
-                import wmi
-                c = wmi.WMI()
-                for processor in c.Win32_Processor():
-                    return processor.Name
-            except:
-                pass
+                output = subprocess.check_output("wmic cpu get name", shell=True).decode('utf-8').strip()
+                lines = output.split('\n')
+                if len(lines) > 1:
+                    return lines[1]  # The first line is the header, the second line is the CPU name
+            except subprocess.CalledProcessError as e:
+                logger.error(f"Error executing WMIC command: {str(e)}")
+            except Exception as e:
+                logger.error(f"Error getting CPU info: {str(e)}")
         return platform.processor()
 
     def get_system_info(self):
