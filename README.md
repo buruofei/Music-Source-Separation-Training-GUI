@@ -38,6 +38,3 @@ For Chinese users:
 python msst_gui_zh.py
 ```
 
-
-
-
