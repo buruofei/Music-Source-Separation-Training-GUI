@@ -20,6 +20,7 @@ from PyQt5.QtCore import Qt, QThread, pyqtSignal, QSize, QTimer, QMutex, QWaitCo
 from PyQt5.QtGui import QFont, QIcon, QColor, QTextCharFormat, QTextCursor, QPainter, QPixmap, QDesktopServices, QFontInfo
 import resources_rc
 from archive import archive_folders
+import tempfile
 
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 logging.basicConfig(filename='msst_gui.log', level=logging.DEBUG,
@@ -27,6 +28,30 @@ logging.basicConfig(filename='msst_gui.log', level=logging.DEBUG,
 logger = logging.getLogger(__name__)
 
 CONFIG_FILE = 'model_config.json'
+
+
+def remove_screen_splash():
+    # Use this code to signal the splash screen removal.
+    logging.debug("Starting splash screen removal...")
+    if "NUITKA_ONEFILE_PARENT" in os.environ:
+        logging.debug(f"NUITKA_ONEFILE_PARENT: {os.environ['NUITKA_ONEFILE_PARENT']}")
+        splash_filename = os.path.join(
+            tempfile.gettempdir(),
+            f"onefile_{int(os.environ['NUITKA_ONEFILE_PARENT'])}_splash_feedback.tmp"
+        )
+        logging.debug(f"Splash filename: {splash_filename}")
+        if os.path.exists(splash_filename):
+            try:
+                os.unlink(splash_filename)
+                logging.debug("Splash file removed successfully")
+            except Exception as e:
+                logging.error(f"Error removing splash file: {e}")
+        else:
+            logging.debug("Splash file does not exist")
+    else:
+        logging.debug("NUITKA_ONEFILE_PARENT not in environment variables")
+
+    logging.debug("Splash screen removal complete")
 
 
 def load_or_create_config():
@@ -870,6 +895,9 @@ class MainWindow(QMainWindow):
         if not os.path.exists(self.input_folder):
             os.makedirs(self.input_folder)
 
+        if not os.path.exists('pretrain'):
+            os.makedirs('pretrain')
+
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
         main_layout = QVBoxLayout(central_widget)
@@ -1434,6 +1462,11 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(self, "Error", "Input folder does not exist. Please select a valid folder.")
             return
 
+        if not os.listdir(self.input_folder):
+            QMessageBox.warning(self, "No Files",
+                                "The input folder is empty. Please add some audio files and try again.")
+            return
+
         inference_base = inference_env + ' inference.py'
         fast_inference = self.fast_inference_checkbox.isChecked()
         force_cpu = self.force_cpu_checkbox.isChecked()
@@ -1633,6 +1666,7 @@ class MainWindow(QMainWindow):
 if __name__ == "__main__":
     logger.info("Starting application")
     app = QApplication(sys.argv)
+    remove_screen_splash()
     window = MainWindow()
     window.show()
     sys.exit(app.exec_())
