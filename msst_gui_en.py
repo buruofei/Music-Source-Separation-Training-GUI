@@ -59,17 +59,17 @@ def load_or_create_config():
         initial_config = {
             "vocal_models": {
                 "None": "Do not use vocal separation",
-                "MelBandRoformer_kim.ckpt": "【Recommended】 Slightly better SDR than the other two and halves the time",
+                "MelBandRoformer_kim.ckpt": "\u3010Recommended\u3011 Slightly better SDR than the other two and halves the time",
                 "model_bs_roformer_ep_317_sdr_12.9755.ckpt": "Note: 1297 has slightly higher SDR, but may introduce noise at very high frequencies",
                 "model_bs_roformer_ep_368_sdr_12.9628.ckpt": "1296 version, without the potential high-frequency noise issue"
             },
             "kara_models": {
                 "None": "Do not use harmony separation",
-                "mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt": "【Aggressive】 But performs much better than existing UVR models"
+                "mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt": "\u3010Aggressive\u3011 But performs much better than existing UVR models"
             },
             "reverb_models": {
                 "None": "Do not use reverb and harmony separation",
-                "dereverb_mel_band_roformer_anvuew_sdr_19.1729.ckpt": "【Recommended】 Currently the highest SDR score",
+                "dereverb_mel_band_roformer_anvuew_sdr_19.1729.ckpt": "\u3010Recommended\u3011 Currently the highest SDR score",
                 "dereverb_mel_band_roformer_less_aggressive_anvuew_sdr_18.8050.ckpt": "Less aggressive than the recommended model",
                 "deverb_bs_roformer_8_384dim_10depth.ckpt": "New bs model trained with more data, higher SDR, more conservative in harmony separation than mel series",
                 "deverb_bs_roformer_8_256dim_8depth.ckpt": "Old bs model",
@@ -77,42 +77,84 @@ def load_or_create_config():
                 "deverb_mel_band_roformer_8_512dim_12depth.ckpt": "Larger network than the 8_256_6 version, slightly higher SDR but 3x inference time",
                 "deverb_mel_band_roformer_ep_27_sdr_10.4567.ckpt": "Initial version, good balance between dereverberation and deharmonization"
             },
-            "denoise_models": {
-                "None": "Do not use denoising",
-                "denoise_mel_band_roformer_aufr33_sdr_27.9959.ckpt": "Use the normal version model with SDR 27.9959",
-                "denoise_mel_band_roformer_aufr33_aggr_sdr_27.9768.ckpt": "Use the aggressive version model with SDR 27.9768"
+            "other_models": {
+                "None": "Do not use other models",
+                "denoise_mel_band_roformer_aufr33_sdr_27.9959.ckpt": "\u3010Denoise\u3011Use the normal version model with SDR 27.9959",
+                "denoise_mel_band_roformer_aufr33_aggr_sdr_27.9768.ckpt": "\u3010Denoise\u3011Use the aggressive version model with SDR 27.9768",
+                "Apollo_LQ_MP3_restoration.ckpt": "\u3010Restoration\u3011Enhancing MP3 audio quality, restoring it to 44.1 kHz",
+                "aspiration_mel_band_roformer_sdr_18.9845.ckpt": "\u3010Aspiration\u3011Aspiration Separation Model",
+                "aspiration_mel_band_roformer_less_aggr_sdr_18.1201.ckpt": "\u3010Aspiration\u3011Less aggr aspiration Separation Model",
+                "mel_band_roformer_crowd_aufr33_viperx_sdr_8.7144.ckpt": "\u3010Crowd\u3011Remove some noisy background crowd sounds, but it will reduce the audio quality."
             },
             "config_paths": {
-                "MelBandRoformer_kim.ckpt": ["configs/config_vocals_mel_band_roformer_kim.yaml",
-                                             "configs/config_vocals_mel_band_roformer_kim-fast.yaml"],
-                "model_bs_roformer_ep_317_sdr_12.9755.ckpt": ["configs/model_bs_roformer_ep_317_sdr_12.9755.yaml",
-                                                              "configs/model_bs_roformer_ep_317_sdr_12.9755-fast.yaml"],
-                "model_bs_roformer_ep_368_sdr_12.9628.ckpt": ["configs/model_bs_roformer_ep_368_sdr_12.9628.yaml",
-                                                              "configs/model_bs_roformer_ep_368_sdr_12.9628-fast.yaml"],
+                "MelBandRoformer_kim.ckpt": [
+                    "configs/config_vocals_mel_band_roformer_kim.yaml",
+                    "configs/config_vocals_mel_band_roformer_kim-fast.yaml"
+                ],
+                "model_bs_roformer_ep_317_sdr_12.9755.ckpt": [
+                    "configs/model_bs_roformer_ep_317_sdr_12.9755.yaml",
+                    "configs/model_bs_roformer_ep_317_sdr_12.9755-fast.yaml"
+                ],
+                "model_bs_roformer_ep_368_sdr_12.9628.ckpt": [
+                    "configs/model_bs_roformer_ep_368_sdr_12.9628.yaml",
+                    "configs/model_bs_roformer_ep_368_sdr_12.9628-fast.yaml"
+                ],
                 "mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt": [
                     "configs/config_mel_band_roformer_karaoke.yaml",
-                    "configs/config_mel_band_roformer_karaoke-fast.yaml"],
-                "dereverb_mel_band_roformer_anvuew_sdr_19.1729.ckpt": ["configs/dereverb_mel_band_roformer_anvuew.yaml",
-                                                                       "configs/dereverb_mel_band_roformer_anvuew-fast.yaml"],
+                    "configs/config_mel_band_roformer_karaoke-fast.yaml"
+                ],
+                "dereverb_mel_band_roformer_anvuew_sdr_19.1729.ckpt": [
+                    "configs/dereverb_mel_band_roformer_anvuew.yaml",
+                    "configs/dereverb_mel_band_roformer_anvuew-fast.yaml"
+                ],
                 "dereverb_mel_band_roformer_less_aggressive_anvuew_sdr_18.8050.ckpt": [
                     "configs/dereverb_mel_band_roformer_anvuew.yaml",
-                    "configs/dereverb_mel_band_roformer_anvuew-fast.yaml"],
-                "deverb_bs_roformer_8_384dim_10depth.ckpt": ["configs/deverb_bs_roformer_8_384dim_10depth.yaml",
-                                                             "configs/deverb_bs_roformer_8_384dim_10depth-fast.yaml"],
-                "deverb_bs_roformer_8_256dim_8depth.ckpt": ["configs/deverb_bs_roformer_8_256dim_8depth.yaml",
-                                                            "configs/deverb_bs_roformer_8_256dim_8depth-fast.yaml"],
+                    "configs/dereverb_mel_band_roformer_anvuew-fast.yaml"
+                ],
+                "deverb_bs_roformer_8_384dim_10depth.ckpt": [
+                    "configs/deverb_bs_roformer_8_384dim_10depth.yaml",
+                    "configs/deverb_bs_roformer_8_384dim_10depth-fast.yaml"
+                ],
+                "deverb_bs_roformer_8_256dim_8depth.ckpt": [
+                    "configs/deverb_bs_roformer_8_256dim_8depth.yaml",
+                    "configs/deverb_bs_roformer_8_256dim_8depth-fast.yaml"
+                ],
                 "deverb_mel_band_roformer_8_256dim_6depth.ckpt": [
                     "configs/8_256_6_deverb_mel_band_roformer_8_256dim_6depth.yaml",
-                    "configs/8_256_6_deverb_mel_band_roformer_8_256dim_6depth-fast.yaml"],
+                    "configs/8_256_6_deverb_mel_band_roformer_8_256dim_6depth-fast.yaml"
+                ],
                 "deverb_mel_band_roformer_8_512dim_12depth.ckpt": [
                     "configs/8_512_12_deverb_mel_band_roformer_8_512dim_12depth.yaml",
-                    "configs/8_512_12_deverb_mel_band_roformer_8_512dim_12depth-fast.yaml"],
-                "deverb_mel_band_roformer_ep_27_sdr_10.4567.ckpt": ["configs/deverb_mel_band_roformer.yaml",
-                                                                    "configs/deverb_mel_band_roformer-fast.yaml"],
-                "denoise_mel_band_roformer_aufr33_sdr_27.9959.ckpt": ["configs/model_mel_band_roformer_denoise.yaml",
-                                                                      "configs/model_mel_band_roformer_denoise-fast.yaml"],
+                    "configs/8_512_12_deverb_mel_band_roformer_8_512dim_12depth-fast.yaml"
+                ],
+                "deverb_mel_band_roformer_ep_27_sdr_10.4567.ckpt": [
+                    "configs/deverb_mel_band_roformer.yaml",
+                    "configs/deverb_mel_band_roformer-fast.yaml"
+                ],
+                "denoise_mel_band_roformer_aufr33_sdr_27.9959.ckpt": [
+                    "configs/model_mel_band_roformer_denoise.yaml",
+                    "configs/model_mel_band_roformer_denoise-fast.yaml"
+                ],
                 "denoise_mel_band_roformer_aufr33_aggr_sdr_27.9768.ckpt": [
-                    "configs/model_mel_band_roformer_denoise.yaml", "configs/model_mel_band_roformer_denoise-fast.yaml"]
+                    "configs/model_mel_band_roformer_denoise.yaml",
+                    "configs/model_mel_band_roformer_denoise-fast.yaml"
+                ],
+                "Apollo_LQ_MP3_restoration.ckpt": [
+                    "configs/config_apollo_LQ_MP3_restoration.yaml",
+                    "configs/config_apollo_LQ_MP3_restoration-fast.yaml"
+                ],
+                "aspiration_mel_band_roformer_sdr_18.9845.ckpt": [
+                    "configs/config_aspiration_mel_band_roformer.yaml",
+                    "configs/config_aspiration_mel_band_roformer-fast.yaml"
+                ],
+                "aspiration_mel_band_roformer_less_aggr_sdr_18.1201.ckpt": [
+                    "configs/config_aspiration_mel_band_roformer.yaml",
+                    "configs/config_aspiration_mel_band_roformer-fast.yaml"
+                ],
+                "mel_band_roformer_crowd_aufr33_viperx_sdr_8.7144.ckpt": [
+                    "configs/model_mel_band_roformer_crowd_aufr33_viperx.yaml",
+                    "configs/model_mel_band_roformer_crowd_aufr33_viperx-fast.yaml"
+                ]
             },
             "model_types": {
                 "MelBandRoformer_kim.ckpt": "mel_band_roformer",
@@ -127,9 +169,13 @@ def load_or_create_config():
                 "deverb_mel_band_roformer_8_512dim_12depth.ckpt": "mel_band_roformer",
                 "deverb_mel_band_roformer_ep_27_sdr_10.4567.ckpt": "mel_band_roformer",
                 "denoise_mel_band_roformer_aufr33_sdr_27.9959.ckpt": "mel_band_roformer",
-                "denoise_mel_band_roformer_aufr33_aggr_sdr_27.9768.ckpt": "mel_band_roformer"
+                "denoise_mel_band_roformer_aufr33_aggr_sdr_27.9768.ckpt": "mel_band_roformer",
+                "Apollo_LQ_MP3_restoration.ckpt": "apollo",
+                "aspiration_mel_band_roformer_sdr_18.9845.ckpt": "mel_band_roformer",
+                "aspiration_mel_band_roformer_less_aggr_sdr_18.1201.ckpt": "mel_band_roformer",
+                "mel_band_roformer_crowd_aufr33_viperx_sdr_8.7144.ckpt": "mel_band_roformer"
             },
-            "inference_env": r'.\env\python.exe'
+            "inference_env": ".\\env\\python.exe"
         }
         with open(CONFIG_FILE, 'w') as f:
             json.dump(initial_config, f, indent=4)
@@ -145,13 +191,15 @@ def organize_instrumental_files(store_dir):
 
     moved_files = 0
     start_time = time.time()
+    inst_lower = ['_instrumental', '_aspiration']
 
     for filename in os.listdir(store_dir):
-        if "_instrumental" in filename.lower():
-            src_path = os.path.join(store_dir, filename)
-            dst_path = os.path.join(instrumental_dir, filename)
-            shutil.move(src_path, dst_path)
-            moved_files += 1
+        for lower in inst_lower:
+            if lower in filename.lower():
+                src_path = os.path.join(store_dir, filename)
+                dst_path = os.path.join(instrumental_dir, filename)
+                shutil.move(src_path, dst_path)
+                moved_files += 1
 
     end_time = time.time()
     logger.info(f"Organized {moved_files} instrumental files in {store_dir}")
@@ -313,7 +361,7 @@ class InferenceThread(QThread):
             "separation_results": "Vocal Model",
             "karaoke_results": "Karaoke Model",
             "deverb_results": "Reverb Model",
-            "denoise_results": "Denoise Model"
+            "other_results": "Other Model"
         }
 
         total_files = sum(len(files) for _, _, files in os.walk(self.input_folder))
@@ -539,7 +587,7 @@ class ConfigEditorDialog(QDialog):
 
     @staticmethod
     def validate_config( config):
-        model_types = ["vocal_models", "kara_models", "reverb_models", "denoise_models"]
+        model_types = ["vocal_models", "kara_models", "reverb_models", "other_models"]
         for model_type in model_types:
             if model_type not in config:
                 config[model_type] = {}
@@ -558,7 +606,7 @@ class ConfigEditorDialog(QDialog):
             self.set_background_image()
             self.apply_styles()
 
-            for model_type in ["vocal_models", "kara_models", "reverb_models", "denoise_models"]:
+            for model_type in ["vocal_models", "kara_models", "reverb_models", "other_models"]:
                 tab = QWidget()
                 tab_layout = QVBoxLayout(tab)
                 table = QTableWidget()
@@ -876,13 +924,13 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.background_label = None
         self.inference_thread = None
-        self.setWindowTitle("MSST GUI v1.3     by 领航员未鸟")
+        self.setWindowTitle("MSST GUI v1.3.1     by 领航员未鸟")
         self.setGeometry(100, 100, 800, 800)
         self.setWindowIcon(QIcon(":/images/msst-icon.ico"))
         self.setFont(QApplication.font())
         if sys.platform == 'win32':
             import ctypes
-            myappid = 'AliceNavigator.msst-GUI.v1.3'
+            myappid = 'AliceNavigator.msst-GUI.v1.3.1'
             ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 
         self.config = load_or_create_config()
@@ -937,10 +985,10 @@ class MainWindow(QMainWindow):
         model_layout.addLayout(
             self.create_model_section("Reverb Model:", self.reverb_model_combo, self.reverb_model_tooltip))
 
-        self.denoise_model_combo = self.create_model_combo(self.config["denoise_models"])
-        self.denoise_model_tooltip = self.create_tooltip_label()
+        self.other_model_combo = self.create_model_combo(self.config["other_models"])
+        self.other_model_tooltip = self.create_tooltip_label()
         model_layout.addLayout(
-            self.create_model_section("Denoise Model:", self.denoise_model_combo, self.denoise_model_tooltip))
+            self.create_model_section("Other Model:", self.other_model_combo, self.other_model_tooltip))
 
         self.update_model_combos()
         main_layout.addWidget(model_group)
@@ -1090,14 +1138,14 @@ class MainWindow(QMainWindow):
             lambda: self.update_tooltip(self.kara_model_combo, self.kara_model_tooltip))
         self.reverb_model_combo.currentIndexChanged.connect(
             lambda: self.update_tooltip(self.reverb_model_combo, self.reverb_model_tooltip))
-        self.denoise_model_combo.currentIndexChanged.connect(
-            lambda: self.update_tooltip(self.denoise_model_combo, self.denoise_model_tooltip))
+        self.other_model_combo.currentIndexChanged.connect(
+            lambda: self.update_tooltip(self.other_model_combo, self.other_model_tooltip))
 
         # Initial tooltip update
         self.update_tooltip(self.vocal_model_combo, self.vocal_model_tooltip)
         self.update_tooltip(self.kara_model_combo, self.kara_model_tooltip)
         self.update_tooltip(self.reverb_model_combo, self.reverb_model_tooltip)
-        self.update_tooltip(self.denoise_model_combo, self.denoise_model_tooltip)
+        self.update_tooltip(self.other_model_combo, self.other_model_tooltip)
 
         # Set styles
         self.setStyleSheet("""
@@ -1394,7 +1442,7 @@ class MainWindow(QMainWindow):
             self.vocal_model_combo.setCurrentText(self.convert_false_to_none(preset["vocal_model_name"]))
             self.kara_model_combo.setCurrentText(self.convert_false_to_none(preset["kara_model_name"]))
             self.reverb_model_combo.setCurrentText(self.convert_false_to_none(preset["reverb_model_name"]))
-            self.denoise_model_combo.setCurrentText(self.convert_false_to_none(preset["denoise_model_name"]))
+            self.other_model_combo.setCurrentText(self.convert_false_to_none(preset["other_model_name"]))
             self.fast_inference_checkbox.setChecked(preset.get("if_fast", True))
             self.force_cpu_checkbox.setChecked(preset.get("force_cpu", False))
             self.use_tta_checkbox.setChecked(preset.get("use_tta", False))
@@ -1415,7 +1463,7 @@ class MainWindow(QMainWindow):
                     "vocal_model_name": self.convert_none_to_false(self.vocal_model_combo.currentText()),
                     "kara_model_name": self.convert_none_to_false(self.kara_model_combo.currentText()),
                     "reverb_model_name": self.convert_none_to_false(self.reverb_model_combo.currentText()),
-                    "denoise_model_name": self.convert_none_to_false(self.denoise_model_combo.currentText()),
+                    "other_model_name": self.convert_none_to_false(self.other_model_combo.currentText()),
                     "if_fast": self.fast_inference_checkbox.isChecked(),
                     "force_cpu": self.force_cpu_checkbox.isChecked(),
                     "use_tta": self.use_tta_checkbox.isChecked(),
@@ -1497,7 +1545,7 @@ class MainWindow(QMainWindow):
         add_command(self.vocal_model_combo.currentText(), "separation_results")
         add_command(self.kara_model_combo.currentText(), "karaoke_results")
         add_command(self.reverb_model_combo.currentText(), "deverb_results")
-        add_command(self.denoise_model_combo.currentText(), "denoise_results")
+        add_command(self.other_model_combo.currentText(), "other_results")
 
         logger.info(f"Inference commands: {commands}")
 
@@ -1591,7 +1639,7 @@ class MainWindow(QMainWindow):
             self.update_output(f"- {module_name}: {store_dir} ", color='#6e71ff')
         if summary['errors'] > 0:
             self.update_output(f"Errors encountered: {summary['errors']}", color='red')
-        self.print_separator(char='=')
+        # self.print_separator(char='=')
         logger.info(f"Inference summary displayed. Total files: {summary['total_files']}")
 
     def update_output(self, text, color='white', bold=False, italic=False, auto_newline=True):
@@ -1637,7 +1685,7 @@ class MainWindow(QMainWindow):
         self.update_single_combo(self.vocal_model_combo, self.vocal_model_tooltip, self.config["vocal_models"])
         self.update_single_combo(self.kara_model_combo, self.kara_model_tooltip, self.config["kara_models"])
         self.update_single_combo(self.reverb_model_combo, self.reverb_model_tooltip, self.config["reverb_models"])
-        self.update_single_combo(self.denoise_model_combo, self.denoise_model_tooltip, self.config["denoise_models"])
+        self.update_single_combo(self.other_model_combo, self.other_model_tooltip, self.config["other_models"])
 
     def update_single_combo(self, combo, tooltip_label, options):
         current_text = combo.currentText()
