@@ -23,6 +23,7 @@ from archive import archive_folders
 import tempfile
 
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
+env = os.environ.copy()
 logging.basicConfig(filename='msst_gui.log', level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -349,6 +350,17 @@ class InferenceThread(QThread):
         self.is_running = True
         self.process = None
 
+    @staticmethod
+    def extract_env_path(command):
+        python_exe_index = command.find("python.exe ")
+        if python_exe_index != -1:
+            env_path = command[:python_exe_index]
+            if not env_path.endswith('\\') and not env_path.endswith('/'):
+                env_path += '\\'
+            return env_path
+        else:
+            return None
+
     def run(self):
         start_time = time.time()
         summary = {
@@ -374,8 +386,10 @@ class InferenceThread(QThread):
             logger.info(f"Starting inference with command: {command}")
             self.update_signal.emit(f"使用模块: {module_names[store_dir]}", False)
             self.update_signal.emit(f"命令: {command}", False)
+            env_path = self.extract_env_path(command)
+            env['PATH'] = f'{env_path}Scripts;{env_path}bin;{env_path};' + env['PATH']
             self.process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-                                            text=True, universal_newlines=True)
+                                            text=True, universal_newlines=True, env=env)
             for line in self.process.stdout:
                 if not self.is_running:
                     break
