@@ -387,7 +387,9 @@ class InferenceThread(QThread):
             self.update_signal.emit(f"使用模块: {module_names[store_dir]}", False)
             self.update_signal.emit(f"命令: {command}", False)
             env_path = self.extract_env_path(command)
-            env['PATH'] = f'{env_path}Scripts;{env_path}bin;{env_path};' + env['PATH']
+            new_paths = f'{env_path}Scripts;{env_path}bin;{env_path};'
+            if new_paths not in env['PATH']:
+                env['PATH'] = new_paths + env['PATH']
             self.process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                                             text=True, universal_newlines=True, env=env)
             for line in self.process.stdout:
