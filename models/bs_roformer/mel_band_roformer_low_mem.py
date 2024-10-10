@@ -17,8 +17,11 @@ from einops.layers.torch import Rearrange
 
 from librosa import filters
 
+from torch.utils.checkpoint import checkpoint
+
 
 # helper functions
+
 
 def exists(val):
     return val is not None
@@ -143,12 +146,12 @@ class LinearAttention(Module):
             heads=8,
             scale=8,
             flash=False,
+            rotary_embed=None,
             dropout=0.
     ):
         super().__init__()
         dim_inner = dim_head * heads
         self.norm = RMSNorm(dim)
-
         self.to_qkv = nn.Sequential(
             nn.Linear(dim, dim_inner * 3, bias=False),
             Rearrange('b n (qkv h d) -> qkv b h d n', qkv=3, h=heads)
@@ -174,7 +177,6 @@ class LinearAttention(Module):
         x = self.norm(x)
 
         q, k, v = self.to_qkv(x)
-
         q, k = map(l2norm, (q, k))
         q = q * self.temperature.exp()
 
@@ -318,8 +320,6 @@ class MaskEstimator(Module):
         return torch.cat(outs, dim=-1)
 
 
-# main class
-
 class MelBandRoformer(Module):
 
     @beartype
@@ -354,7 +354,7 @@ class MelBandRoformer(Module):
             multi_stft_normalized=False,
             multi_stft_window_fn: Callable = torch.hann_window,
             match_input_audio_length=False,  # if True, pad output tensor to match length of input tensor
-            mlp_expansion_factor=4,
+            mlp_expansion_factor=1,
     ):
         super().__init__()
 
@@ -373,8 +373,8 @@ class MelBandRoformer(Module):
             flash_attn=flash_attn
         )
 
-        time_rotary_embed = RotaryEmbedding(dim=dim_head)
-        freq_rotary_embed = RotaryEmbedding(dim=dim_head)
+        time_rotary_embed = RotaryEmbedding(dim=dim_head, learned_freq=True)
+        freq_rotary_embed = RotaryEmbedding(dim=dim_head, learned_freq=True)
 
         for _ in range(depth):
             tran_modules = []
@@ -397,7 +397,7 @@ class MelBandRoformer(Module):
             normalized=stft_normalized
         )
 
-        freqs = torch.stft(torch.randn(1, 4096), **self.stft_kwargs, window=torch.ones(stft_n_fft), return_complex=True).shape[1]
+        freqs = torch.stft(torch.randn(1, 4096), **self.stft_kwargs, return_complex=True).shape[1]
 
         # create mel filter bank
         # with librosa.filters.mel as in section 2 of paper
@@ -500,7 +500,7 @@ class MelBandRoformer(Module):
         istft_length = raw_audio_length if self.match_input_audio_length else None
 
         assert (not self.stereo and channels == 1) or (
-                    self.stereo and channels == 2), 'stereo needs to be set to True if passing in audio signal that is stereo (channel dimension of 2). also need to be False if mono (channel dimension of 1)'
+                self.stereo and channels == 2), 'stereo needs to be set to True if passing in audio signal that is stereo (channel dimension of 2). also need to be False if mono (channel dimension of 1)'
 
         # to stft
 
@@ -527,7 +527,7 @@ class MelBandRoformer(Module):
 
         x = rearrange(x, 'b f t c -> b t (f c)')
 
-        x = self.band_split(x)
+        x = checkpoint(self.band_split, x)
 
         # axial / hierarchical attention
 
@@ -545,19 +545,19 @@ class MelBandRoformer(Module):
             x = rearrange(x, 'b t f d -> b f t d')
             x, ps = pack([x], '* t d')
 
-            x = time_transformer(x)
+            x = checkpoint(time_transformer, x)
 
             x, = unpack(x, ps, '* t d')
             x = rearrange(x, 'b f t d -> b t f d')
             x, ps = pack([x], '* f d')
 
-            x = freq_transformer(x)
+            x = checkpoint(freq_transformer, x)
 
             x, = unpack(x, ps, '* f d')
 
         num_stems = len(self.mask_estimators)
 
-        masks = torch.stack([fn(x) for fn in self.mask_estimators], dim=1)
+        masks = torch.stack([checkpoint(fn, x, use_reentrant=False) for fn in self.mask_estimators], dim=1)
         masks = rearrange(masks, 'b n t (f c) -> b n f t c', c=2)
 
         # modulate frequency representation
