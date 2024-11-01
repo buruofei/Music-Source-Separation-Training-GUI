@@ -153,10 +153,10 @@ def train_model(args):
 
     # wandb
     if args.wandb_key is None or args.wandb_key.strip() == '':
-        wandb.init(mode = 'disabled')
+        wandb.init(mode='disabled')
     else:
-        wandb.login(key = args.wandb_key)
-        wandb.init(project = 'msst', config = { 'config': config, 'args': args, 'device_ids': device_ids, 'batch_size': batch_size })
+        wandb.login(key=args.wandb_key)
+        wandb.init(project='msst', config={'config': config, 'args': args, 'device_ids': device_ids, 'batch_size': batch_size })
 
     trainset = MSSDataset(
         config,
@@ -269,6 +269,14 @@ def train_model(args):
         for i, (batch, mixes) in enumerate(pbar):
             y = batch.to(device)
             x = mixes.to(device)  # mixture
+
+            if 'normalize' in config.training:
+                if config.training.normalize:
+                    mean = x.mean()
+                    std = x.std()
+                    if std != 0:
+                        x = (x - mean) / std
+                        y = (y - mean) / std
 
             with torch.cuda.amp.autocast(enabled=use_amp):
                 if args.model_type in ['mel_band_roformer', 'bs_roformer']:

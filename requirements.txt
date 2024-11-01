@@ -33,4 +33,4 @@ psutil
 pynvml
 PyQt5
 wmi
-
+wxpython==4.2.2
