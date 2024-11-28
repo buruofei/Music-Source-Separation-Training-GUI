@@ -1,0 +1,95 @@
+2024-11-27 23:17:55,062 - __main__ - INFO - Starting application
+2024-11-27 23:17:55,150 - root - DEBUG - Starting splash screen removal...
+2024-11-27 23:17:55,150 - root - DEBUG - NUITKA_ONEFILE_PARENT not in environment variables
+2024-11-27 23:17:55,150 - root - DEBUG - Splash screen removal complete
+2024-11-27 23:17:55,158 - __main__ - INFO - Loading presets
+2024-11-27 23:17:55,158 - __main__ - DEBUG - Loaded presets: []
+2024-11-27 23:17:55,277 - __main__ - INFO - MainWindow initialization completed
+2024-11-27 23:18:03,671 - __main__ - INFO - Starting inference process
+2024-11-27 23:18:03,672 - __main__ - INFO - Added command for model_bs_roformer_ep_368_sdr_12.9628.ckpt: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type bs_roformer --start_check_point "pretrain/model_bs_roformer_ep_368_sdr_12.9628.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir separation_results --extract_instrumental --config_path "configs/model_bs_roformer_ep_368_sdr_12.9628-fast.yaml"
+2024-11-27 23:18:03,672 - __main__ - INFO - Inference commands: [('/opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type bs_roformer --start_check_point "pretrain/model_bs_roformer_ep_368_sdr_12.9628.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir separation_results --extract_instrumental --config_path "configs/model_bs_roformer_ep_368_sdr_12.9628-fast.yaml"', 'separation_results')]
+2024-11-27 23:18:03,674 - __main__ - INFO - Total files in input folder: 1
+2024-11-27 23:18:03,674 - __main__ - INFO - Starting inference with command: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type bs_roformer --start_check_point "pretrain/model_bs_roformer_ep_368_sdr_12.9628.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir separation_results --extract_instrumental --config_path "configs/model_bs_roformer_ep_368_sdr_12.9628-fast.yaml"
+2024-11-27 23:18:05,238 - __main__ - DEBUG - Using device:  mps
+2024-11-27 23:18:05,239 - __main__ - DEBUG - Start from checkpoint: pretrain/model_bs_roformer_ep_368_sdr_12.9628.ckpt
+2024-11-27 23:18:05,239 - __main__ - DEBUG - Traceback (most recent call last):
+2024-11-27 23:18:05,239 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 181, in <module>
+2024-11-27 23:18:05,239 - __main__ - DEBUG - proc_folder(None)
+2024-11-27 23:18:05,239 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 165, in proc_folder
+2024-11-27 23:18:05,239 - __main__ - DEBUG - state_dict = torch.load(args.start_check_point, map_location=device, weights_only=True)
+2024-11-27 23:18:05,239 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-27 23:18:05,239 - __main__ - DEBUG - File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.12/site-packages/torch/serialization.py", line 1065, in load
+2024-11-27 23:18:05,239 - __main__ - DEBUG - with _open_file_like(f, 'rb') as opened_file:
+2024-11-27 23:18:05,239 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-27 23:18:05,239 - __main__ - DEBUG - File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.12/site-packages/torch/serialization.py", line 468, in _open_file_like
+2024-11-27 23:18:05,239 - __main__ - DEBUG - return _open_file(name_or_buffer, mode)
+2024-11-27 23:18:05,239 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-27 23:18:05,239 - __main__ - DEBUG - File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.12/site-packages/torch/serialization.py", line 449, in __init__
+2024-11-27 23:18:05,239 - __main__ - DEBUG - super().__init__(open(name, mode))
+2024-11-27 23:18:05,239 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^
+2024-11-27 23:18:05,239 - __main__ - DEBUG - FileNotFoundError: [Errno 2] No such file or directory: 'pretrain/model_bs_roformer_ep_368_sdr_12.9628.ckpt'
+2024-11-27 23:18:05,479 - __main__ - INFO - Module 人声分离 completed. 
+2024-11-27 23:18:05,479 - __main__ - INFO - Organized 0 instrumental files in separation_results
+2024-11-27 23:18:05,479 - __main__ - INFO - Time taken to organize files: 0.00 seconds
+2024-11-27 23:18:05,479 - __main__ - INFO - Inference process completed or terminated for 人声分离
+2024-11-27 23:18:05,479 - __main__ - INFO - Inference completed. Total files: 1, Time: 1.81 seconds
+2024-11-27 23:18:05,480 - __main__ - INFO - Inference summary displayed. Total files: 1
+2024-11-27 23:26:42,024 - __main__ - INFO - Starting application
+2024-11-27 23:26:42,129 - root - DEBUG - Starting splash screen removal...
+2024-11-27 23:26:42,129 - root - DEBUG - NUITKA_ONEFILE_PARENT not in environment variables
+2024-11-27 23:26:42,129 - root - DEBUG - Splash screen removal complete
+2024-11-27 23:26:42,147 - __main__ - INFO - Loading presets
+2024-11-27 23:26:42,147 - __main__ - DEBUG - Loaded presets: []
+2024-11-27 23:26:42,298 - __main__ - INFO - MainWindow initialization completed
+2024-11-27 23:28:30,249 - __main__ - INFO - Starting application
+2024-11-27 23:28:30,349 - root - DEBUG - Starting splash screen removal...
+2024-11-27 23:28:30,349 - root - DEBUG - NUITKA_ONEFILE_PARENT not in environment variables
+2024-11-27 23:28:30,349 - root - DEBUG - Splash screen removal complete
+2024-11-27 23:28:30,357 - __main__ - INFO - Loading presets
+2024-11-27 23:28:30,357 - __main__ - DEBUG - Loaded presets: []
+2024-11-27 23:28:30,483 - __main__ - INFO - MainWindow initialization completed
+2024-11-27 23:28:37,354 - __main__ - INFO - Selecting input folder
+2024-11-27 23:28:41,198 - __main__ - INFO - Starting inference process
+2024-11-27 23:28:41,198 - __main__ - INFO - Added command for model_bs_roformer_ep_368_sdr_12.9628.ckpt: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type bs_roformer --start_check_point "pretrain/model_bs_roformer_ep_368_sdr_12.9628.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir separation_results --extract_instrumental --config_path "configs/model_bs_roformer_ep_368_sdr_12.9628-fast.yaml"
+2024-11-27 23:28:41,198 - __main__ - INFO - Inference commands: [('/opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type bs_roformer --start_check_point "pretrain/model_bs_roformer_ep_368_sdr_12.9628.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir separation_results --extract_instrumental --config_path "configs/model_bs_roformer_ep_368_sdr_12.9628-fast.yaml"', 'separation_results')]
+2024-11-27 23:28:41,199 - __main__ - INFO - Total files in input folder: 2
+2024-11-27 23:28:41,199 - __main__ - INFO - Starting inference with command: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type bs_roformer --start_check_point "pretrain/model_bs_roformer_ep_368_sdr_12.9628.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir separation_results --extract_instrumental --config_path "configs/model_bs_roformer_ep_368_sdr_12.9628-fast.yaml"
+2024-11-27 23:28:45,918 - __main__ - DEBUG - Using device:  mps
+2024-11-27 23:28:45,918 - __main__ - DEBUG - Start from checkpoint: pretrain/model_bs_roformer_ep_368_sdr_12.9628.ckpt
+2024-11-27 23:28:45,918 - __main__ - DEBUG - Instruments: ['Vocals', 'Instrumental']
+2024-11-27 23:28:45,918 - __main__ - DEBUG - Model load time: 1.42 sec
+2024-11-27 23:28:45,918 - __main__ - DEBUG - Total files found: 1
+2024-11-27 23:28:45,918 - __main__ - DEBUG - Starting processing track:  /Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input/0095.wav
+2024-11-27 23:28:45,919 - __main__ - DEBUG - 
+2024-11-27 23:28:56,122 - __main__ - DEBUG - Processing audio chunks:   0%|          | 0/121275 [00:00<?, ?it/s]
+2024-11-27 23:28:56,122 - __main__ - DEBUG - Processing audio chunks: 176400it [00:10, 17288.37it/s]
+2024-11-27 23:28:57,134 - __main__ - DEBUG - 
+2024-11-27 23:28:57,135 - __main__ - DEBUG - Elapsed time: 12.87 sec
+2024-11-27 23:28:57,658 - __main__ - INFO - Module 人声分离 completed. 
+2024-11-27 23:28:57,658 - __main__ - INFO - Organized 1 instrumental files in separation_results
+2024-11-27 23:28:57,658 - __main__ - INFO - Time taken to organize files: 0.00 seconds
+2024-11-27 23:28:57,658 - __main__ - INFO - Inference process completed or terminated for 人声分离
+2024-11-27 23:28:57,658 - __main__ - INFO - Inference completed. Total files: 2, Time: 16.46 seconds
+2024-11-27 23:28:57,660 - __main__ - INFO - Inference summary displayed. Total files: 2
+2024-11-27 23:37:06,582 - __main__ - INFO - Updated working config for vocal_models
+2024-11-27 23:37:06,583 - __main__ - INFO - Moved row 3 to 2 in vocal_models
+2024-11-27 23:37:07,539 - __main__ - INFO - Updated working config for vocal_models
+2024-11-27 23:37:07,539 - __main__ - INFO - Moved row 3 to 2 in vocal_models
+2024-11-27 23:37:13,919 - __main__ - INFO - Updated working config for vocal_models
+2024-11-27 23:37:13,919 - __main__ - INFO - Moved row 3 to 2 in vocal_models
+2024-11-27 23:37:17,145 - __main__ - INFO - Updated working config for vocal_models
+2024-11-27 23:37:17,146 - __main__ - INFO - Moved row 2 to 1 in vocal_models
+2024-11-27 23:37:23,954 - __main__ - INFO - Configuration saved successfully
+2024-11-27 23:38:28,380 - __main__ - INFO - Updated working config for kara_models
+2024-11-27 23:38:28,380 - __main__ - INFO - Added new model dereverb_mel_band_roformer_less_aggressive_anvuew_sdr_18.8050 to kara_models
+2024-11-27 23:38:34,156 - __main__ - INFO - Updated working config for kara_models
+2024-11-27 23:38:34,156 - __main__ - INFO - Moved row 2 to 1 in kara_models
+2024-11-27 23:38:37,523 - __main__ - INFO - Configuration saved successfully
+2024-11-27 23:39:38,935 - __main__ - INFO - Updated working config for reverb_models
+2024-11-27 23:39:38,935 - __main__ - INFO - Moved row 5 to 4 in reverb_models
+2024-11-27 23:39:40,101 - __main__ - INFO - Updated working config for reverb_models
+2024-11-27 23:39:40,101 - __main__ - INFO - Moved row 4 to 3 in reverb_models
+2024-11-27 23:39:40,808 - __main__ - INFO - Updated working config for reverb_models
+2024-11-27 23:39:40,808 - __main__ - INFO - Moved row 3 to 2 in reverb_models
+2024-11-27 23:39:42,208 - __main__ - INFO - Updated working config for reverb_models
+2024-11-27 23:39:42,208 - __main__ - INFO - Moved row 2 to 1 in reverb_models
