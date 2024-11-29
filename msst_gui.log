@@ -372,3 +372,49 @@
 2024-11-29 11:34:15,093 - __main__ - INFO - Inference process completed or terminated for 和声分离
 2024-11-29 11:34:15,093 - __main__ - INFO - Inference completed. Total files: 3, Time: 10.55 seconds
 2024-11-29 11:34:15,094 - __main__ - INFO - Inference summary displayed. Total files: 3
+2024-11-29 11:39:51,097 - __main__ - INFO - Starting inference process
+2024-11-29 11:39:51,098 - __main__ - INFO - Added command for model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke.yaml" --force_cpu
+2024-11-29 11:39:51,098 - __main__ - INFO - Inference commands: [('/opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke.yaml" --force_cpu', 'karaoke_results')]
+2024-11-29 11:39:51,101 - __main__ - INFO - Total files in input folder: 2
+2024-11-29 11:39:51,101 - __main__ - INFO - Starting inference with command: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke.yaml" --force_cpu
+2024-11-29 11:39:53,802 - __main__ - DEBUG - Using device:  cpu
+2024-11-29 11:39:53,802 - __main__ - DEBUG - Start from checkpoint: pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt
+2024-11-29 11:39:53,803 - __main__ - DEBUG - Instruments: ['karaoke', 'other']
+2024-11-29 11:39:53,803 - __main__ - DEBUG - Model load time: 1.27 sec
+2024-11-29 11:39:53,803 - __main__ - DEBUG - Total files found: 1 Use sample rate: 44100
+2024-11-29 11:39:53,803 - __main__ - DEBUG - Starting processing track:  /Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input/小朋友的快乐.wav
+2024-11-29 11:39:53,803 - __main__ - DEBUG - 
+2024-11-29 11:40:08,641 - __main__ - DEBUG - Processing audio chunks:   0%|          | 0/1533880 [00:00<?, ?it/s]
+2024-11-29 11:40:23,146 - __main__ - DEBUG - Processing audio chunks:   6%|▌         | 88200/1533880 [00:14<04:03, 5944.17it/s]
+2024-11-29 11:40:33,812 - __main__ - DEBUG - Processing audio chunks:  12%|█▏        | 176400/1533880 [00:29<03:45, 6023.55it/s]
+2024-11-29 11:40:38,136 - __main__ - DEBUG - Processing audio chunks:  14%|█▍        | 220500/1533880 [00:40<03:38, 6023.55it/s]
+2024-11-29 11:40:52,986 - __main__ - DEBUG - Processing audio chunks:  17%|█▋        | 264600/1533880 [00:44<03:33, 5958.91it/s]
+2024-11-29 11:41:03,826 - __main__ - DEBUG - Processing audio chunks:  23%|██▎       | 352800/1533880 [00:59<03:18, 5951.29it/s]
+2024-11-29 11:41:07,994 - __main__ - DEBUG - Processing audio chunks:  26%|██▌       | 396900/1533880 [01:10<03:11, 5951.29it/s]
+2024-11-29 11:41:22,617 - __main__ - DEBUG - Processing audio chunks:  29%|██▉       | 441000/1533880 [01:14<03:04, 5924.18it/s]
+2024-11-29 11:41:33,832 - __main__ - DEBUG - Processing audio chunks:  35%|███▍      | 529200/1533880 [01:28<02:48, 5960.33it/s]
+2024-11-29 11:41:37,210 - __main__ - DEBUG - Processing audio chunks:  37%|███▋      | 573300/1533880 [01:40<02:41, 5960.33it/s]
+2024-11-29 11:41:51,886 - __main__ - DEBUG - Processing audio chunks:  40%|████      | 617400/1533880 [01:43<02:33, 5987.34it/s]
+2024-11-29 11:42:03,844 - __main__ - DEBUG - Processing audio chunks:  46%|████▌     | 705600/1533880 [01:58<02:18, 5994.53it/s]
+2024-11-29 11:42:06,366 - __main__ - DEBUG - Processing audio chunks:  49%|████▉     | 749700/1533880 [02:10<02:10, 5994.53it/s]
+2024-11-29 11:42:20,875 - __main__ - DEBUG - Processing audio chunks:  52%|█████▏    | 793800/1533880 [02:12<02:02, 6024.42it/s]
+2024-11-29 11:42:33,856 - __main__ - DEBUG - Processing audio chunks:  58%|█████▊    | 882000/1533880 [02:27<01:47, 6041.17it/s]
+2024-11-29 11:42:35,290 - __main__ - DEBUG - Processing audio chunks:  60%|██████    | 926100/1533880 [02:40<01:40, 6041.17it/s]
+2024-11-29 11:42:50,245 - __main__ - DEBUG - Processing audio chunks:  63%|██████▎   | 970200/1533880 [02:41<01:32, 6064.67it/s]
+2024-11-29 11:43:03,862 - __main__ - DEBUG - Processing audio chunks:  69%|██████▉   | 1058400/1533880 [02:56<01:19, 6012.85it/s]
+2024-11-29 11:43:04,741 - __main__ - DEBUG - Processing audio chunks:  72%|███████▏  | 1102500/1533880 [03:10<01:11, 6012.85it/s]
+2024-11-29 11:43:19,344 - __main__ - DEBUG - Processing audio chunks:  75%|███████▍  | 1146600/1533880 [03:10<01:04, 6034.34it/s]
+2024-11-29 11:43:33,867 - __main__ - DEBUG - Processing audio chunks:  81%|████████  | 1234800/1533880 [03:25<00:49, 6036.02it/s]
+2024-11-29 11:43:34,257 - __main__ - DEBUG - Processing audio chunks:  83%|████████▎ | 1278900/1533880 [03:40<00:42, 6036.02it/s]
+2024-11-29 11:43:49,135 - __main__ - DEBUG - Processing audio chunks:  86%|████████▋ | 1323000/1533880 [03:40<00:35, 5998.84it/s]
+2024-11-29 11:44:03,832 - __main__ - DEBUG - Processing audio chunks:  92%|█████████▏| 1411200/1533880 [03:55<00:20, 5977.35it/s]
+2024-11-29 11:44:10,446 - __main__ - DEBUG - Processing audio chunks:  98%|█████████▊| 1499400/1533880 [04:10<00:05, 5984.57it/s]
+2024-11-29 11:44:10,447 - __main__ - DEBUG - Processing audio chunks: 1543500it [04:16, 6094.86it/s]
+2024-11-29 11:44:11,574 - __main__ - DEBUG - 
+2024-11-29 11:44:11,574 - __main__ - DEBUG - Elapsed time: 257.83 sec
+2024-11-29 11:44:11,847 - __main__ - INFO - Module 和声分离 completed. 
+2024-11-29 11:44:11,847 - __main__ - INFO - Organized 1 instrumental files in karaoke_results
+2024-11-29 11:44:11,847 - __main__ - INFO - Time taken to organize files: 0.00 seconds
+2024-11-29 11:44:11,847 - __main__ - INFO - Inference process completed or terminated for 和声分离
+2024-11-29 11:44:11,847 - __main__ - INFO - Inference completed. Total files: 2, Time: 260.75 seconds
+2024-11-29 11:44:11,849 - __main__ - INFO - Inference summary displayed. Total files: 2

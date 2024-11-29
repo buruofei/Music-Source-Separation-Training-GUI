@@ -96,6 +96,7 @@ __pycache__/*/*
 
 # 忽略 separation_results 目录
 separation_results/
+karaoke_results/
 
 # 忽略临时文件
 *.tmp
