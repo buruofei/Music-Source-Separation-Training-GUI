@@ -1,0 +1,374 @@
+2024-11-29 11:13:19,396 - __main__ - INFO - Starting application
+2024-11-29 11:13:19,490 - root - DEBUG - Starting splash screen removal...
+2024-11-29 11:13:19,490 - root - DEBUG - NUITKA_ONEFILE_PARENT not in environment variables
+2024-11-29 11:13:19,490 - root - DEBUG - Splash screen removal complete
+2024-11-29 11:13:19,498 - __main__ - INFO - Loading presets
+2024-11-29 11:13:19,498 - __main__ - DEBUG - Loaded presets: []
+2024-11-29 11:13:19,626 - __main__ - INFO - MainWindow initialization completed
+2024-11-29 11:13:29,656 - __main__ - INFO - Starting inference process
+2024-11-29 11:13:29,657 - __main__ - INFO - Added command for model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke-fast.yaml"
+2024-11-29 11:13:29,657 - __main__ - INFO - Inference commands: [('/opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke-fast.yaml"', 'karaoke_results')]
+2024-11-29 11:13:29,659 - __main__ - INFO - Total files in input folder: 3
+2024-11-29 11:13:29,659 - __main__ - INFO - Starting inference with command: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke-fast.yaml"
+2024-11-29 11:13:34,714 - __main__ - DEBUG - Using device:  mps
+2024-11-29 11:13:34,715 - __main__ - DEBUG - Start from checkpoint: pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt
+2024-11-29 11:13:34,715 - __main__ - DEBUG - Instruments: ['karaoke', 'other']
+2024-11-29 11:13:34,715 - __main__ - DEBUG - Model load time: 1.70 sec
+2024-11-29 11:13:34,715 - __main__ - DEBUG - Total files found: 2 Use sample rate: 44100
+2024-11-29 11:13:34,715 - __main__ - DEBUG - Starting processing track:  /Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input/后宫·甄嬛传.Empresses.in.the.Palace.2011.E46.WEB-DL.4k.H265.10bit.AAC-AIU_Vocals.wav
+2024-11-29 11:13:34,715 - __main__ - DEBUG - 
+2024-11-29 11:13:39,419 - __main__ - DEBUG - Processing audio chunks:   0%|          | 0/119895584 [00:00<?, ?it/s]Traceback (most recent call last):
+2024-11-29 11:13:39,420 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 184, in <module>
+2024-11-29 11:13:39,420 - __main__ - DEBUG - proc_folder(None)
+2024-11-29 11:13:39,420 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 180, in proc_folder
+2024-11-29 11:13:39,420 - __main__ - DEBUG - run_folder(model, args, config, device, verbose=True)
+2024-11-29 11:13:39,420 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 79, in run_folder
+2024-11-29 11:13:39,420 - __main__ - DEBUG - waveforms = demix(config, model, mix, device, pbar=detailed_pbar, model_type=args.model_type)
+2024-11-29 11:13:39,420 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:13:39,420 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/utils.py", line 408, in demix
+2024-11-29 11:13:39,420 - __main__ - DEBUG - return demix_track(config, model, mix, device, pbar=pbar)
+2024-11-29 11:13:39,420 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:13:39,420 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/utils.py", line 134, in demix_track
+2024-11-29 11:13:39,420 - __main__ - DEBUG - x = model(arr)
+2024-11-29 11:13:39,420 - __main__ - DEBUG - ^^^^^^^^^^
+2024-11-29 11:13:39,420 - __main__ - DEBUG - File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+2024-11-29 11:13:39,420 - __main__ - DEBUG - return self._call_impl(*args, **kwargs)
+2024-11-29 11:13:39,420 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:13:39,420 - __main__ - DEBUG - File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+2024-11-29 11:13:39,420 - __main__ - DEBUG - return forward_call(*args, **kwargs)
+2024-11-29 11:13:39,420 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:13:39,420 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/models/bs_roformer/mel_band_roformer.py", line 607, in forward
+2024-11-29 11:13:39,420 - __main__ - DEBUG - masks_summed = torch.zeros_like(stft_repr_expanded_stems).scatter_add_(2, scatter_indices, masks)
+2024-11-29 11:13:39,420 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:13:39,420 - __main__ - DEBUG - RuntimeError: scatter(): Yet not supported for complex
+2024-11-29 11:13:39,634 - __main__ - DEBUG - 
+2024-11-29 11:13:40,162 - __main__ - DEBUG - 
+2024-11-29 11:13:40,162 - __main__ - INFO - Module 和声分离 completed. 
+2024-11-29 11:13:40,163 - __main__ - INFO - Organized 0 instrumental files in karaoke_results
+2024-11-29 11:13:40,163 - __main__ - INFO - Time taken to organize files: 0.00 seconds
+2024-11-29 11:13:40,163 - __main__ - INFO - Inference process completed or terminated for 和声分离
+2024-11-29 11:13:40,163 - __main__ - INFO - Inference completed. Total files: 3, Time: 10.50 seconds
+2024-11-29 11:13:40,164 - __main__ - INFO - Inference summary displayed. Total files: 3
+2024-11-29 11:15:40,288 - __main__ - INFO - Starting application
+2024-11-29 11:15:40,382 - root - DEBUG - Starting splash screen removal...
+2024-11-29 11:15:40,382 - root - DEBUG - NUITKA_ONEFILE_PARENT not in environment variables
+2024-11-29 11:15:40,382 - root - DEBUG - Splash screen removal complete
+2024-11-29 11:15:40,390 - __main__ - INFO - Loading presets
+2024-11-29 11:15:40,391 - __main__ - DEBUG - Loaded presets: []
+2024-11-29 11:15:40,528 - __main__ - INFO - MainWindow initialization completed
+2024-11-29 11:15:46,910 - __main__ - INFO - Starting inference process
+2024-11-29 11:15:46,910 - __main__ - INFO - Added command for model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke-fast.yaml"
+2024-11-29 11:15:46,911 - __main__ - INFO - Inference commands: [('/opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke-fast.yaml"', 'karaoke_results')]
+2024-11-29 11:15:46,912 - __main__ - INFO - Total files in input folder: 3
+2024-11-29 11:15:46,913 - __main__ - INFO - Starting inference with command: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke-fast.yaml"
+2024-11-29 11:15:51,193 - __main__ - DEBUG - Using device:  mps
+2024-11-29 11:15:51,194 - __main__ - DEBUG - Start from checkpoint: pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt
+2024-11-29 11:15:51,194 - __main__ - DEBUG - Instruments: ['karaoke', 'other']
+2024-11-29 11:15:51,194 - __main__ - DEBUG - Model load time: 1.52 sec
+2024-11-29 11:15:51,194 - __main__ - DEBUG - Total files found: 2 Use sample rate: 44100
+2024-11-29 11:15:51,194 - __main__ - DEBUG - Starting processing track:  /Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input/后宫·甄嬛传.Empresses.in.the.Palace.2011.E46.WEB-DL.4k.H265.10bit.AAC-AIU_Vocals.wav
+2024-11-29 11:15:51,194 - __main__ - DEBUG - 
+2024-11-29 11:15:55,976 - __main__ - DEBUG - Processing audio chunks:   0%|          | 0/119895584 [00:00<?, ?it/s]Traceback (most recent call last):
+2024-11-29 11:15:55,976 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 184, in <module>
+2024-11-29 11:15:55,976 - __main__ - DEBUG - proc_folder(None)
+2024-11-29 11:15:55,976 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 180, in proc_folder
+2024-11-29 11:15:55,977 - __main__ - DEBUG - run_folder(model, args, config, device, verbose=True)
+2024-11-29 11:15:55,977 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 79, in run_folder
+2024-11-29 11:15:55,977 - __main__ - DEBUG - waveforms = demix(config, model, mix, device, pbar=detailed_pbar, model_type=args.model_type)
+2024-11-29 11:15:55,977 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:15:55,977 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/utils.py", line 408, in demix
+2024-11-29 11:15:55,977 - __main__ - DEBUG - return demix_track(config, model, mix, device, pbar=pbar)
+2024-11-29 11:15:55,977 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:15:55,977 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/utils.py", line 134, in demix_track
+2024-11-29 11:15:55,977 - __main__ - DEBUG - x = model(arr)
+2024-11-29 11:15:55,977 - __main__ - DEBUG - ^^^^^^^^^^
+2024-11-29 11:15:55,977 - __main__ - DEBUG - File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+2024-11-29 11:15:55,978 - __main__ - DEBUG - return self._call_impl(*args, **kwargs)
+2024-11-29 11:15:55,978 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:15:55,978 - __main__ - DEBUG - File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+2024-11-29 11:15:55,978 - __main__ - DEBUG - return forward_call(*args, **kwargs)
+2024-11-29 11:15:55,978 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:15:55,978 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/models/bs_roformer/mel_band_roformer.py", line 607, in forward
+2024-11-29 11:15:55,978 - __main__ - DEBUG - masks_summed = torch.zeros_like(stft_repr_expanded_stems).scatter_add_(2, scatter_indices, masks)
+2024-11-29 11:15:55,978 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:15:55,978 - __main__ - DEBUG - RuntimeError: scatter(): Yet not supported for complex
+2024-11-29 11:15:56,129 - __main__ - DEBUG - 
+2024-11-29 11:15:56,609 - __main__ - DEBUG - 
+2024-11-29 11:15:56,609 - __main__ - INFO - Module 和声分离 completed. 
+2024-11-29 11:15:56,609 - __main__ - INFO - Organized 0 instrumental files in karaoke_results
+2024-11-29 11:15:56,610 - __main__ - INFO - Time taken to organize files: 0.00 seconds
+2024-11-29 11:15:56,610 - __main__ - INFO - Inference process completed or terminated for 和声分离
+2024-11-29 11:15:56,610 - __main__ - INFO - Inference completed. Total files: 3, Time: 9.70 seconds
+2024-11-29 11:15:56,613 - __main__ - INFO - Inference summary displayed. Total files: 3
+2024-11-29 11:17:29,166 - __main__ - INFO - Starting application
+2024-11-29 11:17:29,260 - root - DEBUG - Starting splash screen removal...
+2024-11-29 11:17:29,260 - root - DEBUG - NUITKA_ONEFILE_PARENT not in environment variables
+2024-11-29 11:17:29,260 - root - DEBUG - Splash screen removal complete
+2024-11-29 11:17:29,269 - __main__ - INFO - Loading presets
+2024-11-29 11:17:29,269 - __main__ - DEBUG - Loaded presets: []
+2024-11-29 11:17:29,405 - __main__ - INFO - MainWindow initialization completed
+2024-11-29 11:17:39,316 - __main__ - INFO - Starting inference process
+2024-11-29 11:17:39,317 - __main__ - INFO - Inference commands: []
+2024-11-29 11:17:39,319 - __main__ - INFO - Total files in input folder: 3
+2024-11-29 11:17:39,319 - __main__ - INFO - Inference completed. Total files: 3, Time: 0.00 seconds
+2024-11-29 11:17:39,322 - __main__ - INFO - Inference summary displayed. Total files: 3
+2024-11-29 11:17:50,259 - __main__ - INFO - Starting inference process
+2024-11-29 11:17:50,260 - __main__ - INFO - Added command for model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke.yaml" --force_cpu
+2024-11-29 11:17:50,260 - __main__ - INFO - Inference commands: [('/opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke.yaml" --force_cpu', 'karaoke_results')]
+2024-11-29 11:17:50,261 - __main__ - INFO - Total files in input folder: 3
+2024-11-29 11:17:50,261 - __main__ - INFO - Starting inference with command: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke.yaml" --force_cpu
+2024-11-29 11:17:55,873 - __main__ - DEBUG - Using device:  cpu
+2024-11-29 11:17:55,874 - __main__ - DEBUG - Start from checkpoint: pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt
+2024-11-29 11:17:55,874 - __main__ - DEBUG - Instruments: ['karaoke', 'other']
+2024-11-29 11:17:55,874 - __main__ - DEBUG - Model load time: 0.99 sec
+2024-11-29 11:17:55,874 - __main__ - DEBUG - Total files found: 2 Use sample rate: 44100
+2024-11-29 11:17:55,874 - __main__ - DEBUG - Starting processing track:  /Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input/后宫·甄嬛传.Empresses.in.the.Palace.2011.E46.WEB-DL.4k.H265.10bit.AAC-AIU_Vocals.wav
+2024-11-29 11:17:55,874 - __main__ - DEBUG - 
+2024-11-29 11:18:11,021 - __main__ - DEBUG - Processing audio chunks:   0%|          | 0/120160184 [00:00<?, ?it/s]
+2024-11-29 11:18:25,636 - __main__ - DEBUG - Processing audio chunks:   0%|          | 88200/120160184 [00:15<5:43:41, 5822.66it/s]
+2024-11-29 11:18:35,882 - __main__ - DEBUG - Processing audio chunks:   0%|          | 176400/120160184 [00:29<5:36:19, 5945.82it/s]
+2024-11-29 11:18:40,831 - __main__ - DEBUG - Processing audio chunks:   0%|          | 220500/120160184 [00:40<5:36:12, 5945.82it/s]
+2024-11-29 11:18:55,890 - __main__ - DEBUG - Processing audio chunks:   0%|          | 264600/120160184 [00:44<5:39:48, 5880.45it/s]
+2024-11-29 11:18:56,476 - __main__ - DEBUG - Processing audio chunks:   0%|          | 308700/120160184 [01:00<5:39:41, 5880.45it/s]
+2024-11-29 11:19:12,247 - __main__ - DEBUG - Processing audio chunks:   0%|          | 352800/120160184 [01:00<5:45:20, 5782.01it/s]
+2024-11-29 11:19:25,901 - __main__ - DEBUG - Processing audio chunks:   0%|          | 441000/120160184 [01:16<5:49:18, 5712.32it/s]
+2024-11-29 11:19:27,833 - __main__ - DEBUG - Processing audio chunks:   0%|          | 485100/120160184 [01:30<5:49:10, 5712.32it/s]
+2024-11-29 11:19:43,829 - __main__ - DEBUG - Processing audio chunks:   0%|          | 529200/120160184 [01:31<5:50:10, 5694.00it/s]
+2024-11-29 11:19:55,913 - __main__ - DEBUG - Processing audio chunks:   1%|          | 617400/120160184 [01:47<5:53:38, 5633.81it/s]
+2024-11-29 11:19:59,547 - __main__ - DEBUG - Processing audio chunks:   1%|          | 661500/120160184 [02:00<5:53:30, 5633.81it/s]
+2024-11-29 11:20:14,665 - __main__ - DEBUG - Processing audio chunks:   1%|          | 705600/120160184 [02:03<5:53:49, 5626.75it/s]
+2024-11-29 11:20:25,922 - __main__ - DEBUG - Processing audio chunks:   1%|          | 793800/120160184 [02:18<5:49:38, 5689.97it/s]
+2024-11-29 11:20:29,062 - __main__ - DEBUG - Processing audio chunks:   1%|          | 837900/120160184 [02:30<5:49:30, 5689.97it/s]
+2024-11-29 11:20:43,906 - __main__ - DEBUG - Processing audio chunks:   1%|          | 882000/120160184 [02:33<5:41:42, 5817.82it/s]
+2024-11-29 11:20:55,928 - __main__ - DEBUG - Processing audio chunks:   1%|          | 970200/120160184 [02:48<5:39:16, 5855.19it/s]
+2024-11-29 11:20:59,474 - __main__ - DEBUG - Processing audio chunks:   1%|          | 1014300/120160184 [03:00<5:39:08, 5855.19it/s]
+2024-11-29 11:21:15,188 - __main__ - DEBUG - Processing audio chunks:   1%|          | 1058400/120160184 [03:03<5:42:28, 5796.14it/s]
+2024-11-29 11:21:25,939 - __main__ - DEBUG - Processing audio chunks:   1%|          | 1146600/120160184 [03:19<5:45:36, 5739.44it/s]
+2024-11-29 11:21:30,893 - __main__ - DEBUG - Processing audio chunks:   1%|          | 1190700/120160184 [03:30<5:45:28, 5739.44it/s]
+2024-11-29 11:21:45,947 - __main__ - DEBUG - Processing audio chunks:   1%|          | 1234800/120160184 [03:35<5:47:38, 5701.55it/s]
+2024-11-29 11:21:46,695 - __main__ - DEBUG - Processing audio chunks:   1%|          | 1278900/120160184 [03:50<5:47:30, 5701.55it/s]
+2024-11-29 11:22:02,282 - __main__ - DEBUG - Processing audio chunks:   1%|          | 1323000/120160184 [03:50<5:49:37, 5664.87it/s]
+2024-11-29 11:22:15,958 - __main__ - DEBUG - Processing audio chunks:   1%|          | 1411200/120160184 [04:06<5:49:29, 5662.99it/s]
+2024-11-29 11:22:17,233 - __main__ - DEBUG - Processing audio chunks:   1%|          | 1455300/120160184 [04:20<5:49:21, 5662.99it/s]
+2024-11-29 11:22:32,307 - __main__ - DEBUG - Processing audio chunks:   1%|          | 1499400/120160184 [04:21<5:45:01, 5732.01it/s]
+2024-11-29 11:22:45,971 - __main__ - DEBUG - Processing audio chunks:   1%|▏         | 1587600/120160184 [04:36<5:42:39, 5767.34it/s]
+2024-11-29 11:22:48,243 - __main__ - DEBUG - Processing audio chunks:   1%|▏         | 1631700/120160184 [04:50<5:42:31, 5767.34it/s]
+2024-11-29 11:23:04,562 - __main__ - DEBUG - Processing audio chunks:   1%|▏         | 1675800/120160184 [04:52<5:46:43, 5695.36it/s]
+2024-11-29 11:23:15,979 - __main__ - DEBUG - Processing audio chunks:   1%|▏         | 1764000/120160184 [05:08<5:52:04, 5604.81it/s]
+2024-11-29 11:23:19,969 - __main__ - DEBUG - Processing audio chunks:   2%|▏         | 1808100/120160184 [05:20<5:51:56, 5604.81it/s]
+2024-11-29 11:23:35,151 - __main__ - DEBUG - Processing audio chunks:   2%|▏         | 1852200/120160184 [05:24<5:49:35, 5640.26it/s]
+2024-11-29 11:23:45,988 - __main__ - DEBUG - Processing audio chunks:   2%|▏         | 1940400/120160184 [05:39<5:46:16, 5690.06it/s]
+2024-11-29 11:23:50,047 - __main__ - DEBUG - Processing audio chunks:   2%|▏         | 1984500/120160184 [05:50<5:46:08, 5690.06it/s]
+2024-11-29 11:24:05,119 - __main__ - DEBUG - Processing audio chunks:   2%|▏         | 2028600/120160184 [05:54<5:41:57, 5757.46it/s]
+2024-11-29 11:24:15,997 - __main__ - DEBUG - Processing audio chunks:   2%|▏         | 2116800/120160184 [06:09<5:40:03, 5785.51it/s]
+2024-11-29 11:24:19,905 - __main__ - DEBUG - Processing audio chunks:   2%|▏         | 2160900/120160184 [06:20<5:39:55, 5785.51it/s]
+2024-11-29 11:24:34,688 - __main__ - DEBUG - Processing audio chunks:   2%|▏         | 2205000/120160184 [06:24<5:36:43, 5838.26it/s]
+2024-11-29 11:24:46,003 - __main__ - DEBUG - Processing audio chunks:   2%|▏         | 2293200/120160184 [06:38<5:34:18, 5876.05it/s]
+2024-11-29 11:24:50,407 - __main__ - DEBUG - Processing audio chunks:   2%|▏         | 2337300/120160184 [06:50<5:34:11, 5876.05it/s]
+2024-11-29 11:25:05,900 - __main__ - DEBUG - Processing audio chunks:   2%|▏         | 2381400/120160184 [06:54<5:38:47, 5793.97it/s]
+2024-11-29 11:25:16,017 - __main__ - DEBUG - Processing audio chunks:   2%|▏         | 2469600/120160184 [07:10<5:40:20, 5763.24it/s]
+2024-11-29 11:25:21,198 - __main__ - DEBUG - Processing audio chunks:   2%|▏         | 2513700/120160184 [07:20<5:40:13, 5763.24it/s]
+2024-11-29 11:25:36,026 - __main__ - DEBUG - Processing audio chunks:   2%|▏         | 2557800/120160184 [07:25<5:40:03, 5763.94it/s]
+2024-11-29 11:25:36,473 - __main__ - DEBUG - Processing audio chunks:   2%|▏         | 2601900/120160184 [07:40<5:39:55, 5763.94it/s]
+2024-11-29 11:25:52,536 - __main__ - DEBUG - Processing audio chunks:   2%|▏         | 2646000/120160184 [07:40<5:39:37, 5766.98it/s]
+2024-11-29 11:26:05,244 - __main__ - INFO - Stopping inference process
+2024-11-29 11:26:05,244 - __main__ - INFO - Terminating inference process
+2024-11-29 11:26:05,426 - __main__ - INFO - Terminating inference process
+2024-11-29 11:26:05,431 - __main__ - INFO - Inference process completed or terminated for 和声分离
+2024-11-29 11:26:15,015 - __main__ - INFO - Starting inference process
+2024-11-29 11:26:15,017 - __main__ - INFO - Added command for model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke-fast.yaml"
+2024-11-29 11:26:15,017 - __main__ - INFO - Inference commands: [('/opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke-fast.yaml"', 'karaoke_results')]
+2024-11-29 11:26:15,019 - __main__ - INFO - Total files in input folder: 3
+2024-11-29 11:26:15,019 - __main__ - INFO - Starting inference with command: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke-fast.yaml"
+2024-11-29 11:26:19,655 - __main__ - DEBUG - Using device:  mps
+2024-11-29 11:26:19,655 - __main__ - DEBUG - Start from checkpoint: pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt
+2024-11-29 11:26:19,656 - __main__ - DEBUG - Instruments: ['karaoke', 'other']
+2024-11-29 11:26:19,656 - __main__ - DEBUG - Model load time: 1.61 sec
+2024-11-29 11:26:19,656 - __main__ - DEBUG - Total files found: 2 Use sample rate: 44100
+2024-11-29 11:26:19,656 - __main__ - DEBUG - Starting processing track:  /Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input/后宫·甄嬛传.Empresses.in.the.Palace.2011.E46.WEB-DL.4k.H265.10bit.AAC-AIU_Vocals.wav
+2024-11-29 11:26:19,656 - __main__ - DEBUG - 
+2024-11-29 11:26:25,432 - __main__ - DEBUG - Processing audio chunks:   0%|          | 0/119895584 [00:00<?, ?it/s]Traceback (most recent call last):
+2024-11-29 11:26:25,433 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 184, in <module>
+2024-11-29 11:26:25,433 - __main__ - DEBUG - proc_folder(None)
+2024-11-29 11:26:25,433 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 180, in proc_folder
+2024-11-29 11:26:25,433 - __main__ - DEBUG - run_folder(model, args, config, device, verbose=True)
+2024-11-29 11:26:25,433 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 79, in run_folder
+2024-11-29 11:26:25,433 - __main__ - DEBUG - waveforms = demix(config, model, mix, device, pbar=detailed_pbar, model_type=args.model_type)
+2024-11-29 11:26:25,433 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:26:25,433 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/utils.py", line 408, in demix
+2024-11-29 11:26:25,433 - __main__ - DEBUG - return demix_track(config, model, mix, device, pbar=pbar)
+2024-11-29 11:26:25,433 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:26:25,433 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/utils.py", line 134, in demix_track
+2024-11-29 11:26:25,433 - __main__ - DEBUG - x = model(arr)
+2024-11-29 11:26:25,433 - __main__ - DEBUG - ^^^^^^^^^^
+2024-11-29 11:26:25,433 - __main__ - DEBUG - File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+2024-11-29 11:26:25,434 - __main__ - DEBUG - return self._call_impl(*args, **kwargs)
+2024-11-29 11:26:25,434 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:26:25,434 - __main__ - DEBUG - File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+2024-11-29 11:26:25,434 - __main__ - DEBUG - return forward_call(*args, **kwargs)
+2024-11-29 11:26:25,434 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:26:25,434 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/models/bs_roformer/mel_band_roformer.py", line 607, in forward
+2024-11-29 11:26:25,435 - __main__ - DEBUG - masks_summed = torch.zeros_like(stft_repr_expanded_stems).scatter_add_(2, scatter_indices, masks)
+2024-11-29 11:26:25,435 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:26:25,435 - __main__ - DEBUG - RuntimeError: scatter(): Yet not supported for complex
+2024-11-29 11:26:25,645 - __main__ - DEBUG - 
+2024-11-29 11:26:26,471 - __main__ - DEBUG - 
+2024-11-29 11:26:26,472 - __main__ - INFO - Module 和声分离 completed. 
+2024-11-29 11:26:26,472 - __main__ - INFO - Organized 0 instrumental files in karaoke_results
+2024-11-29 11:26:26,472 - __main__ - INFO - Time taken to organize files: 0.00 seconds
+2024-11-29 11:26:26,472 - __main__ - INFO - Inference process completed or terminated for 和声分离
+2024-11-29 11:26:26,472 - __main__ - INFO - Inference completed. Total files: 3, Time: 11.45 seconds
+2024-11-29 11:26:26,479 - __main__ - INFO - Inference summary displayed. Total files: 3
+2024-11-29 11:29:26,351 - __main__ - INFO - Starting application
+2024-11-29 11:29:26,496 - root - DEBUG - Starting splash screen removal...
+2024-11-29 11:29:26,496 - root - DEBUG - NUITKA_ONEFILE_PARENT not in environment variables
+2024-11-29 11:29:26,496 - root - DEBUG - Splash screen removal complete
+2024-11-29 11:29:26,510 - __main__ - INFO - Loading presets
+2024-11-29 11:29:26,510 - __main__ - DEBUG - Loaded presets: []
+2024-11-29 11:29:26,675 - __main__ - INFO - MainWindow initialization completed
+2024-11-29 11:29:37,023 - __main__ - INFO - Starting inference process
+2024-11-29 11:29:37,025 - __main__ - INFO - Added command for model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke-fast.yaml"
+2024-11-29 11:29:37,025 - __main__ - INFO - Inference commands: [('/opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke-fast.yaml"', 'karaoke_results')]
+2024-11-29 11:29:37,026 - __main__ - INFO - Total files in input folder: 3
+2024-11-29 11:29:37,027 - __main__ - INFO - Starting inference with command: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke-fast.yaml"
+2024-11-29 11:29:40,790 - __main__ - DEBUG - Using device:  mps
+2024-11-29 11:29:40,791 - __main__ - DEBUG - Start from checkpoint: pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt
+2024-11-29 11:29:40,791 - __main__ - DEBUG - Instruments: ['karaoke', 'other']
+2024-11-29 11:29:40,791 - __main__ - DEBUG - Model load time: 1.58 sec
+2024-11-29 11:29:40,791 - __main__ - DEBUG - Total files found: 2 Use sample rate: 44100
+2024-11-29 11:29:40,791 - __main__ - DEBUG - Starting processing track:  /Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input/后宫·甄嬛传.Empresses.in.the.Palace.2011.E46.WEB-DL.4k.H265.10bit.AAC-AIU_Vocals.wav
+2024-11-29 11:29:40,791 - __main__ - DEBUG - 
+2024-11-29 11:29:46,719 - __main__ - DEBUG - Processing audio chunks:   0%|          | 0/119895584 [00:00<?, ?it/s]Traceback (most recent call last):
+2024-11-29 11:29:46,721 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 184, in <module>
+2024-11-29 11:29:46,721 - __main__ - DEBUG - proc_folder(None)
+2024-11-29 11:29:46,721 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 180, in proc_folder
+2024-11-29 11:29:46,721 - __main__ - DEBUG - run_folder(model, args, config, device, verbose=True)
+2024-11-29 11:29:46,721 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 79, in run_folder
+2024-11-29 11:29:46,721 - __main__ - DEBUG - waveforms = demix(config, model, mix, device, pbar=detailed_pbar, model_type=args.model_type)
+2024-11-29 11:29:46,721 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:29:46,721 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/utils.py", line 408, in demix
+2024-11-29 11:29:46,721 - __main__ - DEBUG - return demix_track(config, model, mix, device, pbar=pbar)
+2024-11-29 11:29:46,721 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:29:46,722 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/utils.py", line 134, in demix_track
+2024-11-29 11:29:46,722 - __main__ - DEBUG - x = model(arr)
+2024-11-29 11:29:46,722 - __main__ - DEBUG - ^^^^^^^^^^
+2024-11-29 11:29:46,722 - __main__ - DEBUG - File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+2024-11-29 11:29:46,722 - __main__ - DEBUG - return self._call_impl(*args, **kwargs)
+2024-11-29 11:29:46,722 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:29:46,722 - __main__ - DEBUG - File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+2024-11-29 11:29:46,722 - __main__ - DEBUG - return forward_call(*args, **kwargs)
+2024-11-29 11:29:46,722 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:29:46,722 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/models/bs_roformer/mel_band_roformer.py", line 610, in forward
+2024-11-29 11:29:46,722 - __main__ - DEBUG - masks_summed = torch.zeros_like(stft_repr_expanded_stems).scatter_add_(2, scatter_indices, masks)
+2024-11-29 11:29:46,722 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:29:46,722 - __main__ - DEBUG - RuntimeError: scatter(): Expected self.dtype to be equal to src.dtype
+2024-11-29 11:29:46,898 - __main__ - DEBUG - 
+2024-11-29 11:29:47,738 - __main__ - DEBUG - 
+2024-11-29 11:29:47,738 - __main__ - INFO - Module 和声分离 completed. 
+2024-11-29 11:29:47,738 - __main__ - INFO - Organized 0 instrumental files in karaoke_results
+2024-11-29 11:29:47,738 - __main__ - INFO - Time taken to organize files: 0.00 seconds
+2024-11-29 11:29:47,738 - __main__ - INFO - Inference process completed or terminated for 和声分离
+2024-11-29 11:29:47,738 - __main__ - INFO - Inference completed. Total files: 3, Time: 10.71 seconds
+2024-11-29 11:29:47,743 - __main__ - INFO - Inference summary displayed. Total files: 3
+2024-11-29 11:32:05,196 - __main__ - INFO - Starting application
+2024-11-29 11:32:05,290 - root - DEBUG - Starting splash screen removal...
+2024-11-29 11:32:05,290 - root - DEBUG - NUITKA_ONEFILE_PARENT not in environment variables
+2024-11-29 11:32:05,290 - root - DEBUG - Splash screen removal complete
+2024-11-29 11:32:05,299 - __main__ - INFO - Loading presets
+2024-11-29 11:32:05,299 - __main__ - DEBUG - Loaded presets: []
+2024-11-29 11:32:05,431 - __main__ - INFO - MainWindow initialization completed
+2024-11-29 11:32:13,657 - __main__ - INFO - Starting inference process
+2024-11-29 11:32:13,658 - __main__ - INFO - Added command for model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke-fast.yaml"
+2024-11-29 11:32:13,658 - __main__ - INFO - Inference commands: [('/opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke-fast.yaml"', 'karaoke_results')]
+2024-11-29 11:32:13,660 - __main__ - INFO - Total files in input folder: 3
+2024-11-29 11:32:13,660 - __main__ - INFO - Starting inference with command: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke-fast.yaml"
+2024-11-29 11:32:17,291 - __main__ - DEBUG - Using device:  mps
+2024-11-29 11:32:17,291 - __main__ - DEBUG - Start from checkpoint: pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt
+2024-11-29 11:32:17,292 - __main__ - DEBUG - Instruments: ['karaoke', 'other']
+2024-11-29 11:32:17,292 - __main__ - DEBUG - Model load time: 1.59 sec
+2024-11-29 11:32:17,292 - __main__ - DEBUG - Total files found: 2 Use sample rate: 44100
+2024-11-29 11:32:17,292 - __main__ - DEBUG - Starting processing track:  /Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input/后宫·甄嬛传.Empresses.in.the.Palace.2011.E46.WEB-DL.4k.H265.10bit.AAC-AIU_Vocals.wav
+2024-11-29 11:32:17,292 - __main__ - DEBUG - 
+2024-11-29 11:32:23,458 - __main__ - DEBUG - Processing audio chunks:   0%|          | 0/119895584 [00:00<?, ?it/s]Traceback (most recent call last):
+2024-11-29 11:32:23,458 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 184, in <module>
+2024-11-29 11:32:23,458 - __main__ - DEBUG - proc_folder(None)
+2024-11-29 11:32:23,458 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 180, in proc_folder
+2024-11-29 11:32:23,458 - __main__ - DEBUG - run_folder(model, args, config, device, verbose=True)
+2024-11-29 11:32:23,458 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 79, in run_folder
+2024-11-29 11:32:23,458 - __main__ - DEBUG - waveforms = demix(config, model, mix, device, pbar=detailed_pbar, model_type=args.model_type)
+2024-11-29 11:32:23,458 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:32:23,458 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/utils.py", line 408, in demix
+2024-11-29 11:32:23,459 - __main__ - DEBUG - return demix_track(config, model, mix, device, pbar=pbar)
+2024-11-29 11:32:23,459 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:32:23,459 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/utils.py", line 134, in demix_track
+2024-11-29 11:32:23,459 - __main__ - DEBUG - x = model(arr)
+2024-11-29 11:32:23,459 - __main__ - DEBUG - ^^^^^^^^^^
+2024-11-29 11:32:23,459 - __main__ - DEBUG - File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+2024-11-29 11:32:23,459 - __main__ - DEBUG - return self._call_impl(*args, **kwargs)
+2024-11-29 11:32:23,459 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:32:23,459 - __main__ - DEBUG - File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+2024-11-29 11:32:23,460 - __main__ - DEBUG - return forward_call(*args, **kwargs)
+2024-11-29 11:32:23,460 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:32:23,460 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/models/bs_roformer/mel_band_roformer.py", line 616, in forward
+2024-11-29 11:32:23,461 - __main__ - DEBUG - masks_summed = torch.zeros_like(stft_repr_expanded_stems).scatter_add_(2, scatter_indices, masks)
+2024-11-29 11:32:23,461 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:32:23,461 - __main__ - DEBUG - RuntimeError: scatter(): Yet not supported for complex
+2024-11-29 11:32:23,628 - __main__ - DEBUG - 
+2024-11-29 11:32:24,326 - __main__ - DEBUG - 
+2024-11-29 11:32:24,327 - __main__ - INFO - Module 和声分离 completed. 
+2024-11-29 11:32:24,327 - __main__ - INFO - Organized 0 instrumental files in karaoke_results
+2024-11-29 11:32:24,327 - __main__ - INFO - Time taken to organize files: 0.00 seconds
+2024-11-29 11:32:24,327 - __main__ - INFO - Inference process completed or terminated for 和声分离
+2024-11-29 11:32:24,327 - __main__ - INFO - Inference completed. Total files: 3, Time: 10.67 seconds
+2024-11-29 11:32:24,330 - __main__ - INFO - Inference summary displayed. Total files: 3
+2024-11-29 11:33:58,669 - __main__ - INFO - Starting application
+2024-11-29 11:33:58,767 - root - DEBUG - Starting splash screen removal...
+2024-11-29 11:33:58,767 - root - DEBUG - NUITKA_ONEFILE_PARENT not in environment variables
+2024-11-29 11:33:58,767 - root - DEBUG - Splash screen removal complete
+2024-11-29 11:33:58,776 - __main__ - INFO - Loading presets
+2024-11-29 11:33:58,776 - __main__ - DEBUG - Loaded presets: []
+2024-11-29 11:33:58,911 - __main__ - INFO - MainWindow initialization completed
+2024-11-29 11:34:04,542 - __main__ - INFO - Starting inference process
+2024-11-29 11:34:04,543 - __main__ - INFO - Added command for model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke-fast.yaml"
+2024-11-29 11:34:04,543 - __main__ - INFO - Inference commands: [('/opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke-fast.yaml"', 'karaoke_results')]
+2024-11-29 11:34:04,544 - __main__ - INFO - Total files in input folder: 3
+2024-11-29 11:34:04,545 - __main__ - INFO - Starting inference with command: /opt/homebrew/Caskroom/miniconda/base/bin/python inference.py --model_type mel_band_roformer --start_check_point "pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt" --input_folder "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input" --store_dir karaoke_results --extract_instrumental --config_path "configs/config_mel_band_roformer_karaoke-fast.yaml"
+2024-11-29 11:34:08,151 - __main__ - DEBUG - Using device:  mps
+2024-11-29 11:34:08,151 - __main__ - DEBUG - Start from checkpoint: pretrain/model_mel_band_roformer_karaoke_aufr33_viperx_sdr_10.1956.ckpt
+2024-11-29 11:34:08,151 - __main__ - DEBUG - Instruments: ['karaoke', 'other']
+2024-11-29 11:34:08,151 - __main__ - DEBUG - Model load time: 1.58 sec
+2024-11-29 11:34:08,151 - __main__ - DEBUG - Total files found: 2 Use sample rate: 44100
+2024-11-29 11:34:08,152 - __main__ - DEBUG - Starting processing track:  /Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/input/后宫·甄嬛传.Empresses.in.the.Palace.2011.E46.WEB-DL.4k.H265.10bit.AAC-AIU_Vocals.wav
+2024-11-29 11:34:08,152 - __main__ - DEBUG - 
+2024-11-29 11:34:14,477 - __main__ - DEBUG - Processing audio chunks:   0%|          | 0/119895584 [00:00<?, ?it/s]Traceback (most recent call last):
+2024-11-29 11:34:14,477 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 184, in <module>
+2024-11-29 11:34:14,477 - __main__ - DEBUG - proc_folder(None)
+2024-11-29 11:34:14,477 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 180, in proc_folder
+2024-11-29 11:34:14,477 - __main__ - DEBUG - run_folder(model, args, config, device, verbose=True)
+2024-11-29 11:34:14,477 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/inference.py", line 79, in run_folder
+2024-11-29 11:34:14,477 - __main__ - DEBUG - waveforms = demix(config, model, mix, device, pbar=detailed_pbar, model_type=args.model_type)
+2024-11-29 11:34:14,477 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:34:14,477 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/utils.py", line 408, in demix
+2024-11-29 11:34:14,478 - __main__ - DEBUG - return demix_track(config, model, mix, device, pbar=pbar)
+2024-11-29 11:34:14,478 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:34:14,478 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/utils.py", line 134, in demix_track
+2024-11-29 11:34:14,478 - __main__ - DEBUG - x = model(arr)
+2024-11-29 11:34:14,478 - __main__ - DEBUG - ^^^^^^^^^^
+2024-11-29 11:34:14,478 - __main__ - DEBUG - File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+2024-11-29 11:34:14,479 - __main__ - DEBUG - return self._call_impl(*args, **kwargs)
+2024-11-29 11:34:14,479 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:34:14,479 - __main__ - DEBUG - File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+2024-11-29 11:34:14,479 - __main__ - DEBUG - return forward_call(*args, **kwargs)
+2024-11-29 11:34:14,479 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:34:14,479 - __main__ - DEBUG - File "/Users/erictsai/Documents/myown/Music-Source-Separation-Training-GUI/models/bs_roformer/mel_band_roformer.py", line 634, in forward
+2024-11-29 11:34:14,479 - __main__ - DEBUG - recon_audio = torch.istft(stft_repr, **self.stft_kwargs, window=stft_window, return_complex=False,
+2024-11-29 11:34:14,479 - __main__ - DEBUG - ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2024-11-29 11:34:14,479 - __main__ - DEBUG - NotImplementedError: The operator 'aten::unfold_backward' is not currently implemented for the MPS device. If you want this op to be added in priority during the prototype phase of this feature, please comment on https://github.com/pytorch/pytorch/issues/77764. As a temporary fix, you can set the environment variable `PYTORCH_ENABLE_MPS_FALLBACK=1` to use the CPU as a fallback for this op. WARNING: this will be slower than running natively on MPS.
+2024-11-29 11:34:14,610 - __main__ - DEBUG - 
+2024-11-29 11:34:15,092 - __main__ - DEBUG - 
+2024-11-29 11:34:15,093 - __main__ - INFO - Module 和声分离 completed. 
+2024-11-29 11:34:15,093 - __main__ - INFO - Organized 0 instrumental files in karaoke_results
+2024-11-29 11:34:15,093 - __main__ - INFO - Time taken to organize files: 0.00 seconds
+2024-11-29 11:34:15,093 - __main__ - INFO - Inference process completed or terminated for 和声分离
+2024-11-29 11:34:15,093 - __main__ - INFO - Inference completed. Total files: 3, Time: 10.55 seconds
+2024-11-29 11:34:15,094 - __main__ - INFO - Inference summary displayed. Total files: 3
